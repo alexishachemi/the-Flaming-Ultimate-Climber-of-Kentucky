@@ -1,0 +1,113 @@
+[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://b363v1mkwudhh"]
+
+[ext_resource type="Texture2D" uid="uid://dq3nxb1r2ua2b" path="res://ressources/player/blue_hand_closed.png" id="1_6yhes"]
+[ext_resource type="Texture2D" uid="uid://derd08l3hwhau" path="res://ressources/player/blue_hand_open.png" id="1_xt70d"]
+[ext_resource type="Texture2D" uid="uid://d2r3pn1hmibh8" path="res://ressources/player/blue_hand_rock.png" id="2_2oll1"]
+[ext_resource type="Texture2D" uid="uid://b65qamil1uv23" path="res://ressources/player/green_hand_closed.png" id="3_y4588"]
+[ext_resource type="Texture2D" uid="uid://5sn7thhob0oe" path="res://ressources/player/green_hand_open.png" id="4_siwmk"]
+[ext_resource type="Texture2D" uid="uid://cka16057bie76" path="res://ressources/player/green_hand_rock.png" id="5_uu1yu"]
+[ext_resource type="Texture2D" uid="uid://bm1irh7ykw5lr" path="res://ressources/player/pink_hand_closed.png" id="6_5tlnq"]
+[ext_resource type="Texture2D" uid="uid://bev7ayc0fxgts" path="res://ressources/player/pink_hand_open.png" id="7_rypmi"]
+[ext_resource type="Texture2D" uid="uid://b4md5j3yt30o3" path="res://ressources/player/pink_hand_rock.png" id="8_gbwvk"]
+[ext_resource type="Texture2D" uid="uid://n1btxb6sl2o4" path="res://ressources/player/purple_hand_closed.png" id="9_6e4hi"]
+[ext_resource type="Texture2D" uid="uid://cs0njbcshfoqo" path="res://ressources/player/purple_hand_open.png" id="10_0q4mj"]
+[ext_resource type="Texture2D" uid="uid://b5fahwkhg1b3e" path="res://ressources/player/purple_hand_rock.png" id="11_p3n3a"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6yhes")
+}],
+"loop": true,
+"name": &"blue_closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xt70d")
+}],
+"loop": true,
+"name": &"blue_open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2oll1")
+}],
+"loop": true,
+"name": &"blue_rock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_y4588")
+}],
+"loop": true,
+"name": &"green_closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_siwmk")
+}],
+"loop": true,
+"name": &"green_open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_uu1yu")
+}],
+"loop": true,
+"name": &"green_rock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_5tlnq")
+}],
+"loop": true,
+"name": &"pink_closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_rypmi")
+}],
+"loop": true,
+"name": &"pink_open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_gbwvk")
+}],
+"loop": true,
+"name": &"pink_rock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_6e4hi")
+}],
+"loop": true,
+"name": &"purple_closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_0q4mj")
+}],
+"loop": true,
+"name": &"purple_open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_p3n3a")
+}],
+"loop": true,
+"name": &"purple_rock",
+"speed": 5.0
+}]
