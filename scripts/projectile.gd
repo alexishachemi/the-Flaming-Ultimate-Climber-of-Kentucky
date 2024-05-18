@@ -8,5 +8,4 @@ func _ready():
 	notifier.connect("screen_exited", _on_ScreenExited)
 
 func _on_ScreenExited():
-	print("bye")
 	queue_free()  # Deletes the object
