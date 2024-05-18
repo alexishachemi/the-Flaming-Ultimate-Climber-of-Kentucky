@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://7epvqg64oenq"]
+
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_1md1p"]
+[ext_resource type="Texture2D" uid="uid://ch3uitomvgyae" path="res://ressources/laflamme.png" id="1_2yvvp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esx4s"]
+size = Vector2(45, 5)
+
+[node name="Projectile" type="RigidBody2D"]
+collision_layer = 16
+gravity_scale = 0.0
+script = ExtResource("1_1md1p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, -1)
+shape = SubResource("RectangleShape2D_esx4s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, -5.96046e-08)
+rotation = 1.5708
+scale = Vector2(0.067, 0.076)
+texture = ExtResource("1_2yvvp")
