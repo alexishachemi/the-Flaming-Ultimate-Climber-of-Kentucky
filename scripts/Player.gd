@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @export_enum("blue", "green", "purple", "pink")
 var color: String = "blue"
 
@@ -12,6 +13,8 @@ var color: String = "blue"
 @export var dragForce: float = 10
 @export var maxVel: Vector2 = Vector2(500, 1000)
 var direction: int = 1
+
+var out: bool = false
 
 enum HAND {OPENED, CLOSED, ROCKING, CLIMBING}
 enum FACE {ANGRY, ANNOYED, CONFIDENT, DEAD, HAPPY, MALICIOUS, SCARED}
@@ -133,6 +136,13 @@ func move():
 func _ready():
 	set_color(color)
 	set_state(STATE.GROUND)
+	var notifier = VisibleOnScreenEnabler2D.new()
+	add_child(notifier)
+	notifier.connect("screen_exited", _on_ScreenExited)
 
 func _process(delta):
 	move()
+
+func _on_ScreenExited():
+	out = true
+	
