@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5qxm2b010fwc"]
+
+[ext_resource type="Texture2D" uid="uid://v3uetuf4y4pn" path="res://assets/kenney_shape-characters/PNG/Default/tile_center.png" id="1_n1n6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0jq4"]
+size = Vector2(12.8607, 12.5836)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.416657, 0.0833488)
+scale = Vector2(0.335416, 0.127084)
+texture = ExtResource("1_n1n6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.416718, 0.0833683)
+rotation = -3.14159
+scale = Vector2(2.17717, -0.794692)
+shape = SubResource("RectangleShape2D_i0jq4")

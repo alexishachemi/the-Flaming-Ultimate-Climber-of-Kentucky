@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj6gamln4kwyw"]
+
+[ext_resource type="Texture2D" uid="uid://o33wwrwp8c67" path="res://assets/background/himalaya-representation-with-mt-everest-sunset_191555-9379-transformed.jpeg" id="1_g0not"]
+[ext_resource type="PackedScene" uid="uid://b5qxm2b010fwc" path="res://level/platform_anim.tscn" id="2_ya1wy"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Himalaya-representation-with-mt-everest-sunset191555-9379-transformed" type="Sprite2D" parent="."]
+position = Vector2(-8, 0)
+scale = Vector2(1.16466, 0.980333)
+texture = ExtResource("1_g0not")
+centered = false
+
+[node name="AnimatableBody2D" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(482, 622)
+
+[node name="AnimatableBody2D2" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(578, 604)
+
+[node name="AnimatableBody2D3" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(699, 537)
+
+[node name="AnimatableBody2D4" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(623, 547)
+
+[node name="AnimatableBody2D5" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(435, 478)
+
+[node name="AnimatableBody2D6" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(724, 463)
+
+[node name="AnimatableBody2D7" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(395, 537)
+
+[node name="AnimatableBody2D8" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(411, 413)
+
+[node name="AnimatableBody2D9" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(659, 403)
+
+[node name="AnimatableBody2D10" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(578, 457)
+
+[node name="AnimatableBody2D11" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(432, 316)
+
+[node name="AnimatableBody2D12" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(599, 288)
+
+[node name="AnimatableBody2D13" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(447, 239)
+
+[node name="AnimatableBody2D14" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(630, 219)
+
+[node name="AnimatableBody2D15" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(389, 164)
+
+[node name="AnimatableBody2D16" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(518, 120)
+
+[node name="AnimatableBody2D17" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(554, 70)
+
+[node name="AnimatableBody2D20" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(604, 169)
+
+[node name="AnimatableBody2D18" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(428, 29)
+
+[node name="AnimatableBody2D19" parent="." instance=ExtResource("2_ya1wy")]
+position = Vector2(428, 29)
