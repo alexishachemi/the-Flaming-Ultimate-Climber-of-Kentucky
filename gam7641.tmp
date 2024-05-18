@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://beuhw6l150bfc"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_s4yr2"]
+[ext_resource type="PackedScene" uid="uid://du1qxx0rk1e2r" path="res://escape.tscn" id="1_viu4a"]
+[ext_resource type="Texture2D" uid="uid://cyii56we5oo4u" path="res://ressources/gamebg.png" id="2_d2cog"]
+[ext_resource type="Script" path="res://BeatMover.gd" id="3_ah2ns"]
+[ext_resource type="Script" path="res://GameCamera.gd" id="3_yabjq"]
+[ext_resource type="AudioStream" uid="uid://8w8xjtad02lv" path="res://ressources/sandstorm.mp3" id="4_me7eb"]
+[ext_resource type="Script" path="res://platform.gd" id="5_eqxj4"]
+[ext_resource type="Texture2D" uid="uid://cmj7asdv4yrwt" path="res://icon.svg" id="6_8fl01"]
+
+[sub_resource type="Animation" id="Animation_xx2ys"]
+resource_name = "zoom_effect"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4yrad"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_051g4"]
+_data = {
+"RESET": SubResource("Animation_4yrad"),
+"zoom_effect": SubResource("Animation_xx2ys")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u02vf"]
+size = Vector2(102, 20)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_s4yr2")
+
+[node name="bg" type="Sprite2D" parent="."]
+texture = ExtResource("2_d2cog")
+
+[node name="GameCamera" type="Camera2D" parent="."]
+script = ExtResource("3_yabjq")
+
+[node name="EscMenu" parent="GameCamera" instance=ExtResource("1_viu4a")]
+visible = false
+
+[node name="zoom_effect" type="AnimationPlayer" parent="GameCamera"]
+libraries = {
+"": SubResource("AnimationLibrary_051g4")
+}
+speed_scale = 2.0
+
+[node name="BeatMover" type="Node" parent="."]
+script = ExtResource("3_ah2ns")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_me7eb")
+
+[node name="platform" type="AnimatableBody2D" parent="."]
+position = Vector2(-200, 0)
+sync_to_physics = false
+script = ExtResource("5_eqxj4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
+position = Vector2(41, 0)
+shape = SubResource("RectangleShape2D_u02vf")
+
+[node name="Sprite2D" type="Sprite2D" parent="platform"]
+position = Vector2(41.5, -1.90735e-06)
+scale = Vector2(0.804688, 0.15625)
+texture = ExtResource("6_8fl01")
+
+[node name="TargetNode" type="Node2D" parent="platform"]
+position = Vector2(400, 0)

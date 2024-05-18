@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwypmdvwk7igq"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_haef1"]
+[ext_resource type="Texture2D" uid="uid://bjpon78u4uqmi" path="res://ressources/everest.png" id="2_j4lt7"]
+[ext_resource type="Script" path="res://scripts/bg.gd" id="3_asm2w"]
+[ext_resource type="AudioStream" uid="uid://bnqlundb0u4cb" path="res://ressources/ameno.mp3" id="4_j3fxv"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_haef1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 678.0
+color = Color(0, 0, 0, 1)
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 642.0
+offset_right = 1149.0
+offset_bottom = 1442.0
+texture = ExtResource("2_j4lt7")
+script = ExtResource("3_asm2w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -50.5
+offset_right = 35.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_j3fxv")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
