@@ -5,12 +5,13 @@
 [ext_resource type="Script" path="res://scripts/BeatMover.gd" id="3_ah2ns"]
 [ext_resource type="Script" path="res://scripts/GameCamera.gd" id="3_yabjq"]
 [ext_resource type="AudioStream" uid="uid://8w8xjtad02lv" path="res://ressources/sandstorm.mp3" id="4_me7eb"]
-[ext_resource type="Texture2D" uid="uid://dbmd10e0p5rsj" path="res://ressources/furthestbg.png" id="5_al5g7"]
-[ext_resource type="Script" path="res://scripts/platform.gd" id="5_eqxj4"]
-[ext_resource type="Texture2D" uid="uid://cmj7asdv4yrwt" path="res://ressources/icon.svg" id="6_8fl01"]
 [ext_resource type="Texture2D" uid="uid://hemdtby0vuhu" path="res://ressources/afterclosestbg.png" id="6_kihpn"]
 [ext_resource type="Texture2D" uid="uid://d34kxbno2qf13" path="res://ressources/closestbg.png" id="7_sjgsn"]
 [ext_resource type="Texture2D" uid="uid://cn5l7i5mbcoox" path="res://ressources/beforclosestbg.png" id="8_6ed2u"]
+[ext_resource type="PackedScene" uid="uid://dnq8ac5o6m1y3" path="res://level/platform.tscn" id="9_1ov1j"]
+[ext_resource type="PackedScene" uid="uid://bu6skg6p85u5q" path="res://level/platform_ro_45.tscn" id="9_yycg3"]
+[ext_resource type="PackedScene" uid="uid://bamxnkbkuvk1p" path="res://level/platform_sca_x4y2.tscn" id="11_21jso"]
+[ext_resource type="PackedScene" uid="uid://dmhoyxpm1o0yv" path="res://level/platform_ro_minus_45.tscn" id="12_44141"]
 [ext_resource type="Texture2D" uid="uid://di1r4ux172y2f" path="res://ressources/bomb.png" id="12_cq3sq"]
 [ext_resource type="Script" path="res://scripts/Bomb.gd" id="12_ogr8u"]
 [ext_resource type="Script" path="res://scripts/Ennemy.gd" id="14_mg7hb"]
@@ -52,9 +53,6 @@ _data = {
 "zoom_effect": SubResource("Animation_xx2ys")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u02vf"]
-size = Vector2(102, 20)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ma2l"]
 radius = 1686.45
 
@@ -78,7 +76,6 @@ speed_scale = 3.5
 [node name="Background1" type="Sprite2D" parent="GameCamera"]
 position = Vector2(11, -849)
 scale = Vector2(1.145, 1.145)
-texture = ExtResource("5_al5g7")
 
 [node name="Background2" type="Sprite2D" parent="GameCamera"]
 position = Vector2(4.99994, -1998)
@@ -101,74 +98,38 @@ script = ExtResource("3_ah2ns")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_me7eb")
 
-[node name="platform" type="AnimatableBody2D" parent="."]
-position = Vector2(-200, -500)
-collision_layer = 4
-collision_mask = 2
-sync_to_physics = false
-script = ExtResource("5_eqxj4")
-target_position = Vector2(200, 0)
-target_scale = Vector2(1, 1)
+[node name="Platform" parent="." instance=ExtResource("9_1ov1j")]
+position = Vector2(-104, 56)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
-position = Vector2(41, 0)
-shape = SubResource("RectangleShape2D_u02vf")
+[node name="Platform2" parent="." instance=ExtResource("9_1ov1j")]
+position = Vector2(40, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="platform"]
-position = Vector2(41.5, -1.90735e-06)
-scale = Vector2(0.804688, 0.15625)
-texture = ExtResource("6_8fl01")
+[node name="Platform3" parent="." instance=ExtResource("9_1ov1j")]
+position = Vector2(-144, -64)
 
-[node name="platform2" type="AnimatableBody2D" parent="."]
-position = Vector2(0, -1000)
-collision_layer = 4
-collision_mask = 2
-sync_to_physics = false
-script = ExtResource("5_eqxj4")
-target_scale = Vector2(4, 2)
+[node name="Platform4" parent="." instance=ExtResource("9_1ov1j")]
+position = Vector2(240, -208)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="platform2"]
-position = Vector2(41, 0)
-shape = SubResource("RectangleShape2D_u02vf")
+[node name="Platform5" parent="." instance=ExtResource("9_1ov1j")]
+position = Vector2(296, -360)
 
-[node name="Sprite2D" type="Sprite2D" parent="platform2"]
-position = Vector2(41.5, -1.90735e-06)
-scale = Vector2(0.804688, 0.15625)
-texture = ExtResource("6_8fl01")
+[node name="Platform6" parent="." instance=ExtResource("9_1ov1j")]
+position = Vector2(32, -448)
 
-[node name="platform3" type="AnimatableBody2D" parent="."]
-position = Vector2(0, -1500)
-collision_layer = 4
-collision_mask = 2
-sync_to_physics = false
-script = ExtResource("5_eqxj4")
-target_rotation_degrees = 90.0
-target_scale = Vector2(1, 1)
+[node name="Platform7" parent="." instance=ExtResource("9_1ov1j")]
+position = Vector2(-232, -512)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="platform3"]
-position = Vector2(41, 0)
-shape = SubResource("RectangleShape2D_u02vf")
+[node name="Platform_ro_45" parent="." instance=ExtResource("9_yycg3")]
+position = Vector2(-272, -112)
 
-[node name="Sprite2D" type="Sprite2D" parent="platform3"]
-position = Vector2(41.5, -1.90735e-06)
-scale = Vector2(0.804688, 0.15625)
-texture = ExtResource("6_8fl01")
+[node name="Platform_sca_x4y2" parent="." instance=ExtResource("11_21jso")]
+position = Vector2(104, -112)
 
-[node name="platform0" type="AnimatableBody2D" parent="."]
-collision_layer = 4
-collision_mask = 2
-sync_to_physics = false
-script = ExtResource("5_eqxj4")
-target_scale = Vector2(1, 1)
+[node name="Platform_ro_minus_45" parent="." instance=ExtResource("12_44141")]
+position = Vector2(24, -272)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="platform0"]
-position = Vector2(41, 0)
-shape = SubResource("RectangleShape2D_u02vf")
-
-[node name="Sprite2D" type="Sprite2D" parent="platform0"]
-position = Vector2(41.5, -1.90735e-06)
-scale = Vector2(0.804688, 0.15625)
-texture = ExtResource("6_8fl01")
+[node name="Platform_ro_minus_46" parent="." instance=ExtResource("12_44141")]
+position = Vector2(48, -576)
 
 [node name="Bomb" type="Area2D" parent="."]
 position = Vector2(46.415, -40)

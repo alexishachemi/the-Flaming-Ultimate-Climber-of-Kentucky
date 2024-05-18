@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu6skg6p85u5q"]
+
+[ext_resource type="Script" path="res://scripts/platform.gd" id="1_s4o1e"]
+[ext_resource type="Texture2D" uid="uid://bj6lcxum5juea" path="res://ressources/kenney_shape-characters/PNG/Double/tile_half_center.png" id="2_4d6ba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ko3rt"]
+size = Vector2(102, 20)
+
+[node name="Platform" type="AnimatableBody2D"]
+sync_to_physics = false
+script = ExtResource("1_s4o1e")
+target_rotation_degrees = 45.0
+target_scale = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.508, 0.156)
+texture = ExtResource("2_4d6ba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.805, 0.635)
+shape = SubResource("RectangleShape2D_ko3rt")
