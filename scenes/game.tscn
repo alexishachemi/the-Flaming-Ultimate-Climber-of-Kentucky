@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://beuhw6l150bfc"]
+[gd_scene load_steps=22 format=3 uid="uid://beuhw6l150bfc"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_s4yr2"]
 [ext_resource type="PackedScene" uid="uid://du1qxx0rk1e2r" path="res://scenes/escape.tscn" id="1_viu4a"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://hemdtby0vuhu" path="res://ressources/afterclosestbg.png" id="6_kihpn"]
 [ext_resource type="Texture2D" uid="uid://d34kxbno2qf13" path="res://ressources/closestbg.png" id="7_sjgsn"]
 [ext_resource type="Texture2D" uid="uid://cn5l7i5mbcoox" path="res://ressources/beforclosestbg.png" id="8_6ed2u"]
+[ext_resource type="Texture2D" uid="uid://di1r4ux172y2f" path="res://ressources/bomb.png" id="12_cq3sq"]
+[ext_resource type="Script" path="res://scripts/Bomb.gd" id="12_ogr8u"]
+[ext_resource type="Script" path="res://scripts/Ennemy.gd" id="14_mg7hb"]
+[ext_resource type="Texture2D" uid="uid://du2b1fdqtrv65" path="res://ressources/ennemy.png" id="15_vvwwe"]
 
 [sub_resource type="Animation" id="Animation_4yrad"]
 length = 0.001
@@ -50,6 +54,11 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u02vf"]
 size = Vector2(102, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ma2l"]
+radius = 1686.45
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8i3o6"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_s4yr2")
@@ -94,6 +103,8 @@ stream = ExtResource("4_me7eb")
 
 [node name="platform" type="AnimatableBody2D" parent="."]
 position = Vector2(-200, -500)
+collision_layer = 4
+collision_mask = 2
 sync_to_physics = false
 script = ExtResource("5_eqxj4")
 target_position = Vector2(200, 0)
@@ -110,6 +121,8 @@ texture = ExtResource("6_8fl01")
 
 [node name="platform2" type="AnimatableBody2D" parent="."]
 position = Vector2(0, -1000)
+collision_layer = 4
+collision_mask = 2
 sync_to_physics = false
 script = ExtResource("5_eqxj4")
 target_scale = Vector2(4, 2)
@@ -125,6 +138,8 @@ texture = ExtResource("6_8fl01")
 
 [node name="platform3" type="AnimatableBody2D" parent="."]
 position = Vector2(0, -1500)
+collision_layer = 4
+collision_mask = 2
 sync_to_physics = false
 script = ExtResource("5_eqxj4")
 target_rotation_degrees = 90.0
@@ -138,3 +153,50 @@ shape = SubResource("RectangleShape2D_u02vf")
 position = Vector2(41.5, -1.90735e-06)
 scale = Vector2(0.804688, 0.15625)
 texture = ExtResource("6_8fl01")
+
+[node name="platform0" type="AnimatableBody2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+sync_to_physics = false
+script = ExtResource("5_eqxj4")
+target_scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform0"]
+position = Vector2(41, 0)
+shape = SubResource("RectangleShape2D_u02vf")
+
+[node name="Sprite2D" type="Sprite2D" parent="platform0"]
+position = Vector2(41.5, -1.90735e-06)
+scale = Vector2(0.804688, 0.15625)
+texture = ExtResource("6_8fl01")
+
+[node name="Bomb" type="Area2D" parent="."]
+position = Vector2(46.415, -40)
+scale = Vector2(0.0426667, 0.0473333)
+collision_layer = 32
+script = ExtResource("12_ogr8u")
+
+[node name="BombSprite" type="Sprite2D" parent="Bomb"]
+texture = ExtResource("12_cq3sq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bomb"]
+shape = SubResource("CircleShape2D_6ma2l")
+
+[node name="Timer" type="Timer" parent="Bomb"]
+
+[node name="Ennemy" type="CharacterBody2D" parent="."]
+z_index = 1
+position = Vector2(0, -300)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("14_mg7hb")
+
+[node name="EnnemySprite" type="Sprite2D" parent="Ennemy"]
+position = Vector2(-15, -25)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("15_vvwwe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ennemy"]
+shape = SubResource("RectangleShape2D_8i3o6")
+
+[connection signal="body_entered" from="Bomb" to="Bomb" method="_on_body_entered"]
