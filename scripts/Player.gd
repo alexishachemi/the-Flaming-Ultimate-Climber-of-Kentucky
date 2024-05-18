@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @export_enum("blue", "green", "purple", "pink")
 var color: String = "blue"
 
@@ -16,6 +17,7 @@ var direction: int = 1
 const HAND_MAX_ROTATION: float = 60
 var handRotation: float = 0
 
+var out: bool = false
 enum HAND {OPENED, CLOSED, ROCKING}
 enum FACE {ANGRY, ANNOYED, CONFIDENT, DEAD, HAPPY, MALICIOUS, SCARED}
 enum STATE {GROUND, AIR, J_AIR, DJ_AIR, GRAB, BLAZE}
@@ -184,6 +186,14 @@ func move_body():
 
 func _ready():
 	set_color(color)
+	set_state(STATE.GROUND)
+	var notifier = VisibleOnScreenEnabler2D.new()
+	add_child(notifier)
+	notifier.connect("screen_exited", _on_ScreenExited)
+
+func _on_ScreenExited():
+	out = true
+	
 	set_state(STATE.AIR)
 
 func _process(delta):
@@ -214,3 +224,4 @@ func _on_right_grab_box_exited(area):
 	if grabZone == area:
 		grabZone = null
 	set_hand(HAND.CLOSED, true)
+ 

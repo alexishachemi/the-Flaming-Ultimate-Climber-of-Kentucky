@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://beuhw6l150bfc"]
+[gd_scene load_steps=27 format=3 uid="uid://beuhw6l150bfc"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_s4yr2"]
 [ext_resource type="PackedScene" uid="uid://du1qxx0rk1e2r" path="res://scenes/escape.tscn" id="1_viu4a"]
@@ -16,6 +16,10 @@
 [ext_resource type="Script" path="res://scripts/Bomb.gd" id="12_ogr8u"]
 [ext_resource type="Script" path="res://scripts/Ennemy.gd" id="14_mg7hb"]
 [ext_resource type="Texture2D" uid="uid://du2b1fdqtrv65" path="res://ressources/ennemy.png" id="15_vvwwe"]
+[ext_resource type="Texture2D" uid="uid://cmj7asdv4yrwt" path="res://ressources/icon.svg" id="17_3x4x8"]
+[ext_resource type="PackedScene" uid="uid://dl2f8lc6amcyk" path="res://scenes/Player.tscn" id="17_j3rct"]
+[ext_resource type="Script" path="res://scripts/PlayerLevelManager.gd" id="18_kuxu5"]
+[ext_resource type="PackedScene" uid="uid://buqrjnjki86im" path="res://scenes/checkpoint.tscn" id="20_gkso7"]
 
 [sub_resource type="Animation" id="Animation_4yrad"]
 length = 0.001
@@ -57,6 +61,9 @@ _data = {
 radius = 1686.45
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i3o6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rsd1"]
+size = Vector2(1013, 46)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_s4yr2")
@@ -100,36 +107,82 @@ stream = ExtResource("4_me7eb")
 
 [node name="Platform" parent="." instance=ExtResource("9_1ov1j")]
 position = Vector2(-104, 56)
+collision_layer = 4
+collision_mask = 2
+
+[node name="Platform8" parent="." instance=ExtResource("9_1ov1j")]
+position = Vector2(-24, 117)
+collision_layer = 4
+collision_mask = 2
+
+[node name="Platform9" parent="." instance=ExtResource("9_1ov1j")]
+position = Vector2(45, 164)
+collision_layer = 4
+collision_mask = 2
+
+[node name="Platform10" parent="." instance=ExtResource("9_1ov1j")]
+position = Vector2(106, 205)
+collision_layer = 4
+collision_mask = 2
+
+[node name="Platform11" parent="." instance=ExtResource("9_1ov1j")]
+position = Vector2(166, 244)
+collision_layer = 4
+collision_mask = 2
 
 [node name="Platform2" parent="." instance=ExtResource("9_1ov1j")]
 position = Vector2(40, 0)
+collision_layer = 4
+collision_mask = 2
 
 [node name="Platform3" parent="." instance=ExtResource("9_1ov1j")]
 position = Vector2(-144, -64)
+collision_layer = 4
+collision_mask = 2
 
 [node name="Platform4" parent="." instance=ExtResource("9_1ov1j")]
 position = Vector2(240, -208)
+collision_layer = 4
+collision_mask = 2
 
 [node name="Platform5" parent="." instance=ExtResource("9_1ov1j")]
 position = Vector2(296, -360)
+collision_layer = 4
+collision_mask = 2
 
 [node name="Platform6" parent="." instance=ExtResource("9_1ov1j")]
 position = Vector2(32, -448)
+collision_layer = 4
+collision_mask = 2
 
 [node name="Platform7" parent="." instance=ExtResource("9_1ov1j")]
 position = Vector2(-232, -512)
+collision_layer = 4
+collision_mask = 2
 
 [node name="Platform_ro_45" parent="." instance=ExtResource("9_yycg3")]
 position = Vector2(-272, -112)
+collision_layer = 4
+collision_mask = 2
+target_rotation_degrees = 180.0
+speed = 30.0
 
 [node name="Platform_sca_x4y2" parent="." instance=ExtResource("11_21jso")]
 position = Vector2(104, -112)
+collision_layer = 4
+collision_mask = 2
 
 [node name="Platform_ro_minus_45" parent="." instance=ExtResource("12_44141")]
 position = Vector2(24, -272)
+collision_layer = 4
+collision_mask = 2
+target_rotation_degrees = 180.0
+speed = 50.0
 
 [node name="Platform_ro_minus_46" parent="." instance=ExtResource("12_44141")]
 position = Vector2(48, -576)
+collision_layer = 4
+collision_mask = 2
 
 [node name="Bomb" type="Area2D" parent="."]
 position = Vector2(46.415, -40)
@@ -159,5 +212,39 @@ texture = ExtResource("15_vvwwe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ennemy"]
 shape = SubResource("RectangleShape2D_8i3o6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(4, 305)
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_2rsd1")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-3.49998, -3)
+scale = Vector2(7.85156, 0.375)
+texture = ExtResource("17_3x4x8")
+
+[node name="Player" parent="." instance=ExtResource("17_j3rct")]
+position = Vector2(285, 258)
+scale = Vector2(0.255, 0.255)
+collision_layer = 2
+collision_mask = 100
+speed = 20
+dragForce = 100.0
+
+[node name="LvlManager" type="Node2D" parent="."]
+script = ExtResource("18_kuxu5")
+
+[node name="Checkpoint" parent="." groups=["checkpoints"] instance=ExtResource("20_gkso7")]
+position = Vector2(-415, -104)
+scale = Vector2(0.5, 0.5)
+
+[node name="Checkpoint2" parent="." groups=["checkpoints"] instance=ExtResource("20_gkso7")]
+position = Vector2(437, -304)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="body_entered" from="Bomb" to="Bomb" method="_on_body_entered"]

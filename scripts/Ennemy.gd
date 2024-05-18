@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var beat_mover = $"../BeatMover"
 
+@onready var player = $"../Player"
+
 # Enemy settings
 var speed = 100.0
 var rotation_speed = 50.0  # Higher values mean quicker, smoother rotations
@@ -16,7 +18,7 @@ func _ready():
 
 func _process(delta):
 	# Rotate towards the mouse position
-	var mouse_pos = get_global_mouse_position()
+	var mouse_pos = player.position
 	var vec_to_mouse = mouse_pos - global_position
 	var angle_to_mouse = vec_to_mouse.angle()
 	rotation = lerp_angle(rotation, angle_to_mouse, rotation_speed * delta)
