@@ -184,7 +184,14 @@ func move_body():
 	velocity.y += gravityForce
 	velocity = velocity.clamp(-maxVel, maxVel)
 
+func _on_BeatMover_beat(beats_passed):
+	if beats_passed % 2 == 0:
+		beat()
+
 func _ready():
+	var beatMover = get_parent().find_child("BeatMover")
+	if beatMover != null:
+		beatMover.connect("beat", _on_BeatMover_beat)
 	set_color(color)
 	set_state(STATE.GROUND)
 	var notifier = VisibleOnScreenEnabler2D.new()
