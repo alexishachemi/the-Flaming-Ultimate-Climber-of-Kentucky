@@ -8,6 +8,8 @@ extends Node2D
 @export var target_rotation_degrees: float
 @export var target_scale: Vector2
 @export var speed: float = 20.0  # Movement speed
+@export var beatModulo: int = 1
+@export var invert: bool = false
 
 # State variables to store initial transform
 var initial_position: Vector2
@@ -23,6 +25,8 @@ func _ready():
 	initial_position = position
 	initial_rotation_degrees = rotation_degrees
 	initial_scale = scale
+	if invert:
+		moving_to_target = false
 
 func _process(delta):
 	# Choose the current target based on the flag
@@ -36,5 +40,7 @@ func _process(delta):
 	scale = scale.lerp(current_target_scale, clamp(delta * speed, 0, 1))
 
 func _on_BeatMover_beat(beats_passed):
+	if not ((beats_passed % beatModulo) == 0):
+		return
 	# Toggle the target on each beat
 	moving_to_target = !moving_to_target
