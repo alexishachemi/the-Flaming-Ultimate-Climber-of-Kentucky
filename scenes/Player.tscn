@@ -164,8 +164,7 @@ speed_scale = 3.5
 position = Vector2(-149, 0.00106812)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
-collision_layer = 0
-collision_mask = 64
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rightHand/grabBox"]
 position = Vector2(-4.0015, -590)
@@ -187,8 +186,7 @@ flip_v = true
 position = Vector2(-149, 0)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
-collision_layer = 0
-collision_mask = 64
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="leftHand/grabBox"]
 shape = SubResource("CircleShape2D_12ofr")

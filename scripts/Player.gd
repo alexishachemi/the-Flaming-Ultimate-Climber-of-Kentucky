@@ -10,7 +10,7 @@ var color: String = "blue"
 @export var speed: int = 10
 @export var jumpForce: int = 300
 @export var gravityForce: int = 1
-@export var dragForce: float = 10
+@export var dragForce: float = 100
 @export var maxVel: Vector2 = Vector2(500, 1000)
 @export var maxGrabDist: float = 100
 var direction: int = 1
@@ -100,8 +100,11 @@ func grab():
 	var mouse_dist_y = mouseGrabPoint.y - get_global_mouse_position().y
 	var pos_y = grabPoint.y + mouse_dist_y
 	pos_y = clamp(pos_y, grabPoint.y - maxGrabDist, grabPoint.y + maxGrabDist)
-	global_position.y = pos_y
-
+	velocity.y = -(global_position.y - pos_y)
+	if global_position.y + velocity.y > pos_y:
+		velocity.y = 0
+	if global_position.y + velocity.y < -pos_y:
+		velocity.y = 0
 	if rightHandGrabbing:
 		$rightHand.look_at(grabPoint)
 	else:
