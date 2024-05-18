@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b5qxm2b010fwc" path="res://level/platform_anim.tscn" id="2_cco5l"]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(0, 5)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_top = -8.0
@@ -11,6 +12,7 @@ offset_right = 208.0
 offset_bottom = 226.0
 scale = Vector2(5.54053, 2.80098)
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="background" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
