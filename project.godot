@@ -47,3 +47,4 @@ jump={
 2d_physics/layer_4="Ennemies"
 2d_physics/layer_5="Projectiles"
 2d_physics/layer_6="TrapAreas"
+2d_physics/layer_7="CheckPointsArea"
