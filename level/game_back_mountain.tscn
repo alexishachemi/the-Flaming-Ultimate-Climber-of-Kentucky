@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cj6gamln4kwyw"]
 
-[ext_resource type="Texture2D" uid="uid://o33wwrwp8c67" path="res://assets/background/himalaya-representation-with-mt-everest-sunset_191555-9379-transformed.jpeg" id="1_g0not"]
+[ext_resource type="Texture2D" uid="uid://o33wwrwp8c67" path="res://ressources/background/himalaya-representation-with-mt-everest-sunset_191555-9379-transformed.jpeg" id="1_g0not"]
 [ext_resource type="PackedScene" uid="uid://b5qxm2b010fwc" path="res://level/platform_anim.tscn" id="2_ya1wy"]
 
 [node name="Node2D" type="Node2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5qxm2b010fwc"]
 
-[ext_resource type="Texture2D" uid="uid://v3uetuf4y4pn" path="res://assets/kenney_shape-characters/PNG/Default/tile_center.png" id="1_n1n6u"]
+[ext_resource type="Texture2D" uid="uid://v3uetuf4y4pn" path="res://ressources/kenney_shape-characters/PNG/Default/tile_center.png" id="1_n1n6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i0jq4"]
 size = Vector2(12.8607, 12.5836)
