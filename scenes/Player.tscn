@@ -1,0 +1,142 @@
+[gd_scene load_steps=17 format=3 uid="uid://dl2f8lc6amcyk"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_euvtn"]
+[ext_resource type="Texture2D" uid="uid://5n828npq6vk1" path="res://ressources/player/blue_body_squircle.png" id="2_wbolo"]
+[ext_resource type="Texture2D" uid="uid://r4y2r2u6b2e5" path="res://ressources/player/green_body_squircle.png" id="3_6tnoi"]
+[ext_resource type="Texture2D" uid="uid://b46lwev44v4r7" path="res://ressources/player/pink_body_squircle.png" id="4_fiv43"]
+[ext_resource type="Texture2D" uid="uid://bslrsv4mp6xun" path="res://ressources/player/purple_body_squircle.png" id="5_cnnok"]
+[ext_resource type="Texture2D" uid="uid://chjwoiapgy8hj" path="res://ressources/player/face_g.png" id="6_w1vvn"]
+[ext_resource type="Texture2D" uid="uid://3r4waoq3go02" path="res://ressources/player/face_b.png" id="7_m5dct"]
+[ext_resource type="Texture2D" uid="uid://cnpusm0k66pgt" path="res://ressources/player/face_e.png" id="8_uxdco"]
+[ext_resource type="Texture2D" uid="uid://chpikjvmkhvxi" path="res://ressources/player/face_j.png" id="9_bg0mq"]
+[ext_resource type="Texture2D" uid="uid://ddm3u7yxefcxt" path="res://ressources/player/face_a.png" id="10_toiwh"]
+[ext_resource type="Texture2D" uid="uid://frret4xyaos" path="res://ressources/player/face_f.png" id="11_25765"]
+[ext_resource type="Texture2D" uid="uid://cugojdoavxjqj" path="res://ressources/player/face_i.png" id="12_f4s2s"]
+[ext_resource type="SpriteFrames" uid="uid://b363v1mkwudhh" path="res://ressources/hand_sprite_frame.tres" id="13_tukfo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpqga"]
+size = Vector2(128, 136)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ocav8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wbolo")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6tnoi")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fiv43")
+}],
+"loop": true,
+"name": &"pink",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_cnnok")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_46f1y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_w1vvn")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_m5dct")
+}],
+"loop": true,
+"name": &"annoyed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_uxdco")
+}],
+"loop": true,
+"name": &"confident",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_bg0mq")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_toiwh")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_25765")
+}],
+"loop": true,
+"name": &"malicious",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_f4s2s")
+}],
+"loop": true,
+"name": &"scared",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(590, 231)
+script = ExtResource("1_euvtn")
+speed = 100
+gravityForce = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_rpqga")
+
+[node name="body" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ocav8")
+animation = &"blue"
+
+[node name="face" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.26667, 1.26667)
+sprite_frames = SubResource("SpriteFrames_46f1y")
+animation = &"scared"
+
+[node name="leftHand" type="AnimatedSprite2D" parent="."]
+position = Vector2(-142, -9.00001)
+sprite_frames = ExtResource("13_tukfo")
+animation = &"blue_open"
+flip_h = true
+
+[node name="rightHand" type="AnimatedSprite2D" parent="."]
+position = Vector2(130, -30)
+sprite_frames = ExtResource("13_tukfo")
+animation = &"purple_rock"
