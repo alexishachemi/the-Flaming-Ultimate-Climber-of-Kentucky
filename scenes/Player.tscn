@@ -193,7 +193,6 @@ position = Vector2(590, 231)
 collision_layer = 2
 collision_mask = 100
 script = ExtResource("1_euvtn")
-jumpForce = 1000
 
 [node name="rightHand" type="Node2D" parent="."]
 metadata/_edit_group_ = true

@@ -113,8 +113,6 @@ texture = ExtResource("9_0qtax")
 [node name="Player" parent="." instance=ExtResource("10_omap5")]
 position = Vector2(285, 258)
 scale = Vector2(0.255, 0.255)
-dragForce = 100.0
-speed = 20
 
 [node name="LvlManager" type="Node2D" parent="."]
 script = ExtResource("11_ucq5w")
