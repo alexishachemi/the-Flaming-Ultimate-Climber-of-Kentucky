@@ -24,7 +24,7 @@ position = Vector2(-32, -2024)
 
 [node name="Player" parent="." index="4"]
 dragForce = 150.0
-speed = 80
+speed = 90
 jumpForce = 500
 
 [node name="Platform" parent="." index="6" instance=ExtResource("2_cjyyo")]

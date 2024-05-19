@@ -4,7 +4,7 @@ extends Node
 signal beat(beats_passed)
 
 # Settable properties
-var bpm: float = 136.0  # Beats per minute
+@export var bpm: float = 136.0  # Beats per minute
 var beats_passed: int = 0
 var seconds_per_beat: float
 var next_beat_time: float = 0.0
