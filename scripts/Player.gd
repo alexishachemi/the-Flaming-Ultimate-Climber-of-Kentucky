@@ -3,6 +3,8 @@ extends CharacterBody2D
 signal healthChanged
 signal staminaChanged
 
+@export var damagedInvSeconds: float = 2
+
 @export_group("Apearance")
 @export_enum("blue", "green", "purple", "pink")
 var color: String = "blue"
@@ -10,8 +12,8 @@ var color: String = "blue"
 @export var leftHand: HAND = HAND.CLOSED
 
 @export_group("Physics")
-@export var gravityForce: int = 1
-@export var dragForce: float = 100
+@export var gravityForce: int = 10
+@export var dragForce: float = 30
 @export var maxVel: Vector2 = Vector2(500, 1000)
 @export var maxGrabDist: float = 100
 
@@ -96,14 +98,36 @@ func beat():
 		$leftHand/beatPulse.play("beat")
 		set_hand(HAND.ROCKING, false)
 
+func _on_grab_drain_timeout():
+	drainStamina()
+
+func _on_grab_replenish_timeout():
+	replenishStamina()
+
+func drainStamina():
+	if currentStamina < 0:
+		currentStamina = 0
+		return
+	currentStamina -= staminaDrain
+	staminaChanged.emit()
+
+func replenishStamina():
+	if currentStamina > stamina:
+		currentStamina = stamina
+		return
+	currentStamina += staminaDrain * 2
+	staminaChanged.emit()
+
 func grab():
 	grabbing = Input.is_action_pressed("grab")
-	if not grabbing or grabJumped:
+	if not grabbing or grabJumped or currentStamina <= 0:
 		if state == STATE.GRAB:
+			$grabDrain.stop()
 			set_state(STATE.AIR)
 		return
 	if can_grab() and state != STATE.GRAB:
 		set_state(STATE.GRAB)
+		drainStamina()
 		set_hand(HAND.CLOSED, rightHandGrabbing)
 		mouseGrabPoint = get_global_mouse_position()
 		if rightHandGrabbing:
@@ -198,9 +222,9 @@ func move_body():
 		velocity = Vector2.ZERO
 		return
 	if not state in [STATE.GRAB, STATE.DIE]:
-		if is_on_floor():
+		if is_on_floor() and not onBeat:
 			set_state(STATE.GROUND)
-		else:
+		elif not onBeat:
 			set_state(STATE.AIR)
 	direction = 0
 	if Input.is_action_pressed("move_left"):
@@ -233,6 +257,19 @@ func die():
 	velocity.y = -jumpForce / 2
 	set_ghost_mode(true)
 
+func _on_invincibility_timeout():
+	$InvincibilityAnim.stop()
+	$leftHand/sprite.show()
+	$rightHand/sprite.show()
+	$body.show()
+
+func hurt(damage: float):
+	if not $Invincibility.is_stopped():
+		return
+	currentHealth -= damage
+	$Invincibility.start()
+	healthChanged.emit()
+
 func reset():
 	set_ghost_mode(false)
 	currentHealth = maxHealth
@@ -241,6 +278,7 @@ func reset():
 
 func _ready():
 	var beatMover = get_parent().find_child("BeatMover")
+	$Invincibility.wait_time = damagedInvSeconds
 	if beatMover != null:
 		beatMover.connect("beat", _on_BeatMover_beat)
 	set_color(color)
@@ -249,15 +287,29 @@ func _ready():
 	add_child(notifier)
 	notifier.connect("screen_exited", _on_ScreenExited)
 	reset()
+	show()
 
 func _on_ScreenExited():
 	out = true
 	
 	set_state(STATE.AIR)
 
+func handle_stats():
+	if state == STATE.GROUND and $grabReplenish.is_stopped():
+			$grabReplenish.start()
+	elif state != STATE.GROUND:
+		$grabReplenish.stop()
+	if state == STATE.GRAB and $grabDrain.is_stopped():
+		$grabDrain.start()
+	elif state != STATE.GRAB:
+		$grabDrain.stop()
+
 func _process(delta):
-	if Input.is_action_just_pressed("pause"):
-		die()
+	if Input.is_action_just_pressed("emote"):
+		beat()
+	if not $Invincibility.is_stopped() and not $InvincibilityAnim.is_playing():
+		$InvincibilityAnim.play("Invincibility")
+	handle_stats()
 	move_body()
 	move_hands()
 	move_and_slide()

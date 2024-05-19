@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dl2f8lc6amcyk"]
+[gd_scene load_steps=27 format=3 uid="uid://dl2f8lc6amcyk"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_euvtn"]
 [ext_resource type="Texture2D" uid="uid://5n828npq6vk1" path="res://ressources/player/blue_body_squircle.png" id="2_wbolo"]
@@ -139,13 +139,56 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_gjnpb"]
+resource_name = "Invincibility"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rightHand/sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("leftHand/sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mh63t"]
+_data = {
+"Invincibility": SubResource("Animation_gjnpb")
+}
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(590, 231)
 collision_layer = 2
 collision_mask = 60
 script = ExtResource("1_euvtn")
-gravityForce = 10
-dragForce = 30.0
 speed = 100
 jumpForce = 1000
 
@@ -216,7 +259,7 @@ animation = &"blue"
 [node name="face" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.26667, 1.26667)
 sprite_frames = SubResource("SpriteFrames_46f1y")
-animation = &"scared"
+animation = &"confident"
 
 [node name="StaminaBar" type="TextureProgressBar" parent="."]
 anchors_preset = 1
@@ -264,9 +307,26 @@ texture_under = ExtResource("14_5qgcv")
 texture_progress = ExtResource("17_e3awx")
 script = ExtResource("18_uhdah")
 
+[node name="grabDrain" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="grabReplenish" type="Timer" parent="."]
+wait_time = 0.07
+
+[node name="Invincibility" type="Timer" parent="."]
+one_shot = true
+
+[node name="InvincibilityAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mh63t")
+}
+
 [connection signal="animation_finished" from="rightHand/beatPulse" to="." method="_on_beat_pulsed"]
 [connection signal="area_entered" from="rightHand/grabBox" to="." method="_on_right_grab_box_entered"]
 [connection signal="area_exited" from="rightHand/grabBox" to="." method="_on_right_grab_box_exited"]
 [connection signal="area_entered" from="leftHand/grabBox" to="." method="_on_left_grab_box_entered"]
 [connection signal="area_exited" from="leftHand/grabBox" to="." method="_on_left_grab_box_exited"]
 [connection signal="animation_finished" from="leftHand/beatPulse" to="." method="_on_beat_pulsed"]
+[connection signal="timeout" from="grabDrain" to="." method="_on_grab_drain_timeout"]
+[connection signal="timeout" from="grabReplenish" to="." method="_on_grab_replenish_timeout"]
+[connection signal="timeout" from="Invincibility" to="." method="_on_invincibility_timeout"]
