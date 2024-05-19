@@ -2,8 +2,8 @@ extends Area2D
 
 # Explosion settings
 var explosion_radius = 100
-var explosion_force = 5000
-var delay = 2.0
+var explosion_force = 10000
+var delay = 1.0
 
 @onready var timer = $Timer
 
