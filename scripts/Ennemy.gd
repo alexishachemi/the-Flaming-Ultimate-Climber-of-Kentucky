@@ -5,8 +5,8 @@ extends CharacterBody2D
 @onready var player = $"../Player"
 
 # Enemy settings
-var speed = 50.0
-var rotation_speed = 50.0  # Higher values mean quicker, smoother rotations
+var speed = 40.0
+var rotation_speed = 10.0  # Higher values mean quicker, smoother rotations
 var projectile_scene = preload("res://scenes/projectile.tscn")
 
 
@@ -29,7 +29,9 @@ func _process(delta):
 	move_and_slide()
 
 # Signal handler for shooting
-func _on_GameController_beat(Bbeats_passed):
+func _on_GameController_beat(beats_passed):
+	if beats_passed % 2 == 0:
+		return
 	# Shoot a projectile
 	var projectile = projectile_scene.instantiate()
 	get_parent().add_child(projectile)  # Adding to the parent to avoid transform complications
