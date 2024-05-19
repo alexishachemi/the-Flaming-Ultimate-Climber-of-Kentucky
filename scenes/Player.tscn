@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dl2f8lc6amcyk"]
+[gd_scene load_steps=30 format=3 uid="uid://dl2f8lc6amcyk"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_euvtn"]
 [ext_resource type="Texture2D" uid="uid://5n828npq6vk1" path="res://ressources/player/blue_body_squircle.png" id="2_wbolo"]
@@ -19,6 +19,8 @@
 [ext_resource type="Script" path="res://scripts/StaminaBar.gd" id="16_fb162"]
 [ext_resource type="Texture2D" uid="uid://by3dbnuioeymj" path="res://ressources/bars/healthbarProgress.png" id="17_e3awx"]
 [ext_resource type="Script" path="res://scripts/HealthBar.gd" id="18_uhdah"]
+[ext_resource type="Texture2D" uid="uid://g8gmmyek866r" path="res://ressources/laflammedanslatete.png" id="19_qrmyv"]
+[ext_resource type="PackedScene" uid="uid://cmtrr62nsgouy" path="res://scenes/flame.tscn" id="20_4kmfb"]
 
 [sub_resource type="Animation" id="Animation_p6bk0"]
 resource_name = "beat"
@@ -277,6 +279,7 @@ sprite_frames = SubResource("SpriteFrames_46f1y")
 animation = &"confident"
 
 [node name="StaminaBar" type="TextureProgressBar" parent="."]
+z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -335,6 +338,13 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_mh63t")
 }
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(40, -133)
+texture = ExtResource("19_qrmyv")
+
+[node name="Flame" parent="Sprite2D" instance=ExtResource("20_4kmfb")]
+position = Vector2(65, -180)
 
 [node name="PowerUp" type="Timer" parent="."]
 one_shot = true

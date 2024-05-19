@@ -3,6 +3,8 @@ extends Node
 # Declare your global variables
 var currentLevel: int = 0
 
+var gameStarted: bool = false
+
 var money_owned: int = 0
 var player_level: int = 1
 var upgrades: Dictionary = {

@@ -4,6 +4,8 @@ signal checkpoint_reached(position)
 
 @export var finalCheckPoint: bool = false
 
+@onready var flame = $Flame
+
 var has_been_passed: bool
 
 # Called when the node enters the scene tree for the first time.
@@ -24,8 +26,9 @@ func _on_checkpoint_trigger_body_entered(body):
 		# Emit the signal with this checkpoint's position
 		emit_signal("checkpoint_reached", position)
 		has_been_passed = true
+		flame.visible = true
 		if finalCheckPoint and Global.currentLevel > Global.player_level:
 			Global.player_level = Global.currentLevel
 	if finalCheckPoint:
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/LevelSelector.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/menu.tscn")
 		
