@@ -21,58 +21,36 @@ script = ExtResource("1_lrvxp")
 
 [node name="Platform" parent="." instance=ExtResource("2_md6dd")]
 position = Vector2(-104, 56)
-collision_layer = 4
-collision_mask = 2
 
 [node name="Platform8" parent="." instance=ExtResource("2_md6dd")]
 position = Vector2(-24, 117)
-collision_layer = 4
-collision_mask = 2
 
 [node name="Platform9" parent="." instance=ExtResource("2_md6dd")]
 position = Vector2(45, 164)
-collision_layer = 4
-collision_mask = 2
 
 [node name="Platform10" parent="." instance=ExtResource("2_md6dd")]
 position = Vector2(106, 205)
-collision_layer = 4
-collision_mask = 2
 
 [node name="Platform11" parent="." instance=ExtResource("2_md6dd")]
 position = Vector2(166, 244)
-collision_layer = 4
-collision_mask = 2
 
 [node name="Platform2" parent="." instance=ExtResource("2_md6dd")]
 position = Vector2(40, 0)
-collision_layer = 4
-collision_mask = 2
 
 [node name="Platform3" parent="." instance=ExtResource("2_md6dd")]
 position = Vector2(-144, -64)
-collision_layer = 4
-collision_mask = 2
 
 [node name="Platform4" parent="." instance=ExtResource("2_md6dd")]
 position = Vector2(240, -208)
-collision_layer = 4
-collision_mask = 2
 
 [node name="Platform5" parent="." instance=ExtResource("2_md6dd")]
 position = Vector2(296, -360)
-collision_layer = 4
-collision_mask = 2
 
 [node name="Platform6" parent="." instance=ExtResource("2_md6dd")]
 position = Vector2(32, -448)
-collision_layer = 4
-collision_mask = 2
 
 [node name="Platform7" parent="." instance=ExtResource("2_md6dd")]
 position = Vector2(-232, -512)
-collision_layer = 4
-collision_mask = 2
 
 [node name="Platform_ro_45" parent="." instance=ExtResource("3_1ebps")]
 position = Vector2(-272, -112)
@@ -81,20 +59,14 @@ speed = 30.0
 
 [node name="Platform_sca_x4y2" parent="." instance=ExtResource("4_6rqqo")]
 position = Vector2(104, -112)
-collision_layer = 4
-collision_mask = 2
 
 [node name="Platform_ro_minus_45" parent="." instance=ExtResource("5_icpdq")]
 position = Vector2(24, -272)
-collision_layer = 4
-collision_mask = 2
 target_rotation_degrees = 180.0
 speed = 50.0
 
 [node name="Platform_ro_minus_46" parent="." instance=ExtResource("5_icpdq")]
 position = Vector2(48, -576)
-collision_layer = 4
-collision_mask = 2
 
 [node name="Bomb" type="Area2D" parent="."]
 position = Vector2(46.415, -40)
