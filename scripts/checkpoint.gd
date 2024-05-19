@@ -30,5 +30,5 @@ func _on_checkpoint_trigger_body_entered(body):
 		if finalCheckPoint and Global.currentLevel > Global.player_level:
 			Global.player_level = Global.currentLevel
 	if finalCheckPoint:
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/LevelSelector.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/menu.tscn")
 		

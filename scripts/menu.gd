@@ -1,18 +1,46 @@
 extends Control
 
+@onready var bg = $bg
+
+@onready var butts = $VBoxContainer
+
+@onready var lvlSel = $LevelSelector
+
+
+var speed = 15.0
+
+var started : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	if Global.gameStarted == true:
+		bg.position.y = 0
+		lvlSel.visible = true
+		butts.visible = false
+		started = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
-
+	if Input.is_action_just_pressed("pause"):
+		if Global.gameStarted and (butts.visible == false):
+			butts.visible = true
+			lvlSel.visible = false
+		else:
+			butts.visible = true
+			Global.gameStarted = true
+			
+	if bg.position.y > 0:
+		bg.position.y -= speed * delta
+	else:
+		if not started:
+			butts.visible = true
+			started = true
+			Global.gameStarted = true
+	
+	
 func _on_start_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/LevelSelector.tscn")
+	butts.visible = false
+	lvlSel.visible = true
 
 
 func _on_options_button_pressed():
