@@ -14,20 +14,36 @@ var color: String = "blue"
 @export_group("Physics")
 @export var gravityForce: int = 10
 @export var dragForce: float = 30
-@export var maxVel: Vector2 = Vector2(500, 1000)
+@export var maxVel: Vector2 = Vector2(1000, 1000)
 @export var maxGrabDist: float = 100
 
 @export_group("Stats")
 @export var maxHealth: int = 100
-@export var speed: int = 10
+@export var speed: int = 500
+@export var acceleration: int = 100
 @export var jumpForce: int = 300
 @export var airJumps: int = 1
-@export var stamina: float = 100
+@export var maxStamina: float = 100
 @export var staminaDrain: float = 5
+@export var isFlying: int = 0
 
 var currentHealth = maxHealth
-var currentStamina = stamina
+var currentStamina = maxStamina
 var currentJumps = airJumps
+
+var oldStats: Dictionary = {
+	"currentHealth": 0,
+	"currentStamina": 0,
+	"currentJumps": 0,
+	"maxHealth": 0,
+	"speed": 0,
+	"acceleration": 0,
+	"jumpForce": 0,
+	"airJumps": 0,
+	"maxStamina": 0,
+	"staminaDrain": 0,
+	"isFlying": 0,
+}
 
 var direction: int = 1
 const HAND_MAX_ROTATION: float = 60
@@ -44,10 +60,49 @@ var rightHandGrabbing: bool = false
 var grabZone: Area2D = null
 var grabPoint: Vector2
 var mouseGrabPoint: Vector2
-var grabJumped:bool = false
+var grabJumped: bool = false
 
 var onBeat: bool = false
 var onHit: bool = false
+
+func stats_to_dict():
+	return {
+		"currentHealth": currentHealth,
+		"currentStamina": currentStamina,
+		"currentJumps": currentJumps,
+		"maxHealth": maxHealth,
+		"speed": speed,
+		"acceleration": acceleration,
+		"jumpForce": jumpForce,
+		"airJumps": airJumps,
+		"maxStamina": maxStamina,
+		"staminaDrain": staminaDrain,
+		"isFlying": isFlying,
+	}
+
+func apply_stats(newStats: Dictionary, increment: bool = false):
+	var currentStats = stats_to_dict()
+	for key in currentStats.keys():
+		oldStats[key] = currentStats[key]
+	for key in newStats.keys():
+		if increment:
+			set(key, currentStats[key] + newStats[key])
+		else:
+			set(key, newStats[key])
+
+func _on_power_up_timeout():
+	power_down()
+
+func power_down():
+	if not $PowerUp.is_stopped():
+		$PowerUp.stop()
+	apply_stats(oldStats.duplicate())
+
+func power_up(stats: Dictionary, time_s: float, increment: bool = true):
+	if not $PowerUp.is_stopped():
+		power_down()
+	apply_stats(stats, increment)
+	$PowerUp.start(time_s)
 
 func set_color(new_color: String):
 	color = new_color
@@ -84,7 +139,7 @@ func hand_to_string(action: HAND):
 func can_grab():
 	return grabZone != null
 
-func _on_beat_pulsed(anim_name):
+func _on_beat_pulsed(_anim_name):
 	onBeat = false
 	set_state(state)
 
@@ -112,8 +167,8 @@ func drainStamina():
 	staminaChanged.emit()
 
 func replenishStamina():
-	if currentStamina > stamina:
-		currentStamina = stamina
+	if currentStamina > maxStamina:
+		currentStamina = maxStamina
 		return
 	currentStamina += staminaDrain * 2
 	staminaChanged.emit()
@@ -219,7 +274,7 @@ func move_body():
 		jump()
 	if state == STATE.GRAB:
 		currentJumps = airJumps
-		velocity = Vector2.ZERO
+		velocity.x = 0
 		return
 	if not state in [STATE.GRAB, STATE.DIE]:
 		if is_on_floor() and not onBeat:
@@ -237,7 +292,8 @@ func move_body():
 	if is_on_floor() and direction == 0:
 		velocity.x += drag
 	if state != STATE.DIE:
-		velocity.x += direction * speed
+		velocity.x += direction * acceleration
+	velocity.x = clamp(velocity.x, -speed, speed)
 	velocity.y += gravityForce
 	velocity = velocity.clamp(-maxVel, maxVel)
 
@@ -272,7 +328,7 @@ func hurt(damage: float):
 func reset():
 	set_ghost_mode(false)
 	currentHealth = maxHealth
-	currentStamina = stamina
+	currentStamina = maxStamina
 	currentJumps = airJumps
 
 func _ready():
@@ -334,4 +390,4 @@ func _on_right_grab_box_exited(area):
 	if grabZone == area:
 		grabZone = null
 	set_hand(HAND.CLOSED, true)
- 
+

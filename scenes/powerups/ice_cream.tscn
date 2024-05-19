@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://47lbuk6w756d"]
+
+[ext_resource type="PackedScene" uid="uid://byfuyvw34ctl8" path="res://scenes/powerups/powerup.tscn" id="1_q6be6"]
+[ext_resource type="Texture2D" uid="uid://0uxfy8s46fxd" path="res://ressources/ice_cream.png" id="2_bf5pg"]
+
+[node name="ice cream" instance=ExtResource("1_q6be6")]
+animation = "eat"
+duration_sec = 7.0
+increment = false
+currentHealthEnabled = true
+currentHealth = 200.0
+maxHealthEnabled = true
+maxHealth = 200.0
+speedEnabled = true
+speed = 200.0
+accelerationEnabled = true
+acceleration = 1.0
+airJumpsEnabled = true
+airJumps = 2
+staminaDrainEnabled = true
+
+[node name="InitialSprite" parent="." index="0"]
+position = Vector2(-3.09944e-06, -1.19209e-06)
+scale = Vector2(0.0364583, 0.0364583)
+texture = ExtResource("2_bf5pg")
+
+[node name="CoockedSprite" parent="." index="1"]
+position = Vector2(0, -50)
