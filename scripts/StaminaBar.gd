@@ -7,7 +7,6 @@ func _ready():
 	player.staminaChanged.connect(update)
 	update()
 
-
 func update():
-	value = player.currentStamina * 100 / player.stamina
+	value = player.currentStamina * 100 / player.maxStamina
 	visible = value < 99

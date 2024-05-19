@@ -68,3 +68,5 @@ emote={
 2d_physics/layer_6="TrapAreas"
 2d_physics/layer_7="CheckPointsArea"
 2d_physics/layer_8="GrabAreas"
+2d_physics/layer_9="PowerUp"
+2d_physics/layer_10="Potatoes"
