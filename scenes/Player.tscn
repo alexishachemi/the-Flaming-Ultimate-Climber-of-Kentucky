@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dl2f8lc6amcyk"]
+[gd_scene load_steps=25 format=3 uid="uid://dl2f8lc6amcyk"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_euvtn"]
 [ext_resource type="Texture2D" uid="uid://5n828npq6vk1" path="res://ressources/player/blue_body_squircle.png" id="2_wbolo"]
@@ -13,6 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://frret4xyaos" path="res://ressources/player/face_f.png" id="11_25765"]
 [ext_resource type="Texture2D" uid="uid://cugojdoavxjqj" path="res://ressources/player/face_i.png" id="12_f4s2s"]
 [ext_resource type="SpriteFrames" uid="uid://b363v1mkwudhh" path="res://ressources/hand_sprite_frame.tres" id="13_tukfo"]
+[ext_resource type="Texture2D" uid="uid://cmnsjt7ljgmqr" path="res://ressources/bars/healthbarUnder.png" id="14_5qgcv"]
+[ext_resource type="Texture2D" uid="uid://bq4hrp100ssam" path="res://ressources/bars/staminabarProgress.png" id="15_fscb3"]
+[ext_resource type="Script" path="res://scripts/StaminaBar.gd" id="16_fb162"]
+[ext_resource type="Texture2D" uid="uid://by3dbnuioeymj" path="res://ressources/bars/healthbarProgress.png" id="17_e3awx"]
+[ext_resource type="Script" path="res://scripts/HealthBar.gd" id="18_uhdah"]
 
 [sub_resource type="Animation" id="Animation_p6bk0"]
 resource_name = "beat"
@@ -212,6 +217,52 @@ animation = &"blue"
 scale = Vector2(1.26667, 1.26667)
 sprite_frames = SubResource("SpriteFrames_46f1y")
 animation = &"scared"
+
+[node name="StaminaBar" type="TextureProgressBar" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -101.0
+offset_top = -155.0
+offset_right = 99.0
+offset_bottom = -125.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("14_5qgcv")
+texture_progress = ExtResource("15_fscb3")
+script = ExtResource("16_fb162")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -30.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("14_5qgcv")
+texture_progress = ExtResource("17_e3awx")
+script = ExtResource("18_uhdah")
 
 [connection signal="animation_finished" from="rightHand/beatPulse" to="." method="_on_beat_pulsed"]
 [connection signal="area_entered" from="rightHand/grabBox" to="." method="_on_right_grab_box_entered"]
