@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="The-flaming-ultimate-climber-of-kentucky"
+config/name="The Flaming Ultimate Climber of Kentucky"
+config/description="A rythm-game bullet hell autoscroller where the goal is to reach the top."
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://ressources/icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
