@@ -1,18 +1,29 @@
 extends CharacterBody2D
 
 
+
+@export_group("Apearance")
 @export_enum("blue", "green", "purple", "pink")
 var color: String = "blue"
-
 @export var rightHand: HAND = HAND.CLOSED
 @export var leftHand: HAND = HAND.CLOSED
 
-@export var speed: int = 10
-@export var jumpForce: int = 300
+@export_group("Physics")
 @export var gravityForce: int = 1
 @export var dragForce: float = 100
 @export var maxVel: Vector2 = Vector2(500, 1000)
 @export var maxGrabDist: float = 100
+
+@export_group("Stats")
+@export var speed: int = 10
+@export var jumpForce: int = 300
+@export var airJumps: int = 1
+@export var stamina: float = 100
+@export var staminaDrain: float = 5
+
+var currentJumps = airJumps
+var currentStamina = stamina
+
 var direction: int = 1
 const HAND_MAX_ROTATION: float = 60
 var handRotation: float = 0
@@ -164,6 +175,8 @@ func jump():
 	velocity.y = -jumpForce
 
 func move_body():
+	var drag = 0.0
+
 	if Input.is_action_just_released("grab"):
 		grabJumped = false
 	if Input.is_action_just_pressed("jump"):
@@ -171,7 +184,6 @@ func move_body():
 	if state == STATE.GRAB:
 		velocity = Vector2.ZERO
 		return
-	var drag = min(abs(velocity.x), dragForce)
 	if state != STATE.GROUND and is_on_floor():
 		set_state(STATE.GROUND)
 	direction = 0
@@ -179,9 +191,10 @@ func move_body():
 		direction += -1
 	if Input.is_action_pressed("move_right"):
 		direction += 1
+	drag = min(abs(velocity.x), dragForce)
 	if velocity.x > 0:
 		drag *= -1
-	if state == STATE.GROUND:
+	if is_on_floor() and direction == 0:
 		velocity.x += drag
 	velocity.x += direction * speed
 	velocity.y += gravityForce

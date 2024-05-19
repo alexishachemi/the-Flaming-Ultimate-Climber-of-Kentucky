@@ -12,8 +12,9 @@ size = Vector2(1013, 43)
 [node name="Tests" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_w1how")]
-jumpForce = 1000
 gravityForce = 30
+dragForce = 30.0
+jumpForce = 1000
 
 [node name="grab" type="Area2D" parent="."]
 position = Vector2(281, 281)
