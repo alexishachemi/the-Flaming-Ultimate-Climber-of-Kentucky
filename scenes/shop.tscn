@@ -1,0 +1,224 @@
+[gd_scene load_steps=10 format=3 uid="uid://bhj2obbwggsae"]
+
+[ext_resource type="Script" path="res://scripts/UpgradeColumn.gd" id="1_du3q1"]
+[ext_resource type="Script" path="res://scripts/MoneyLabel.gd" id="1_fh72q"]
+[ext_resource type="Script" path="res://scripts/shop.gd" id="1_x6ymc"]
+[ext_resource type="Texture2D" uid="uid://cmnsjt7ljgmqr" path="res://ressources/bars/healthbarUnder.png" id="2_hvx5y"]
+[ext_resource type="Texture2D" uid="uid://d00u44gkjq5jh" path="res://ressources/hearthIcon.png" id="2_p3mcf"]
+[ext_resource type="Texture2D" uid="uid://bdrenr4510gvl" path="res://ressources/bars/upgradeProgress.png" id="3_8ve5o"]
+[ext_resource type="Texture2D" uid="uid://cvod8r4twg10p" path="res://ressources/thunderIcon.png" id="5_yqrgq"]
+[ext_resource type="Texture2D" uid="uid://bintrn18d3uhf" path="res://ressources/jumpforceIcon.png" id="6_ji87l"]
+[ext_resource type="Texture2D" uid="uid://bi6d1smny8r5k" path="res://ressources/JumpCountIcon.png" id="7_wdagh"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x6ymc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 43.0
+offset_right = 949.0
+offset_bottom = 602.0
+color = Color(0.31802, 0.31802, 0.31802, 1)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.0
+offset_top = -244.5
+offset_right = 206.0
+offset_bottom = 244.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back"
+
+[node name="MoneyLabel" type="RichTextLabel" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center] 
+[font_size=20]POTATOES 🥔[/font_size]
+[font_size=60]999[/font_size]"
+script = ExtResource("1_fh72q")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2"]
+layout_mode = 2
+
+[node name="UpgradeColumn" type="VBoxContainer" parent="HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("1_du3q1")
+upgradeName = "health"
+showedName = "health"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/HBoxContainer/UpgradeColumn"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("2_p3mcf")
+expand_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/HBoxContainer/UpgradeColumn"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]health
+999$
+"
+fit_content = true
+scroll_active = false
+
+[node name="BuyButton" type="Button" parent="HBoxContainer2/HBoxContainer/UpgradeColumn"]
+layout_mode = 2
+text = "Buy"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer2/HBoxContainer/UpgradeColumn"]
+custom_minimum_size = Vector2(10, 300)
+layout_mode = 2
+value = 50.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("2_hvx5y")
+texture_progress = ExtResource("3_8ve5o")
+
+[node name="UpgradeColumn2" type="VBoxContainer" parent="HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("1_du3q1")
+upgradeName = "stamina"
+showedName = "stamina"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/HBoxContainer/UpgradeColumn2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_yqrgq")
+expand_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/HBoxContainer/UpgradeColumn2"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]stamina
+999$
+"
+fit_content = true
+scroll_active = false
+
+[node name="BuyButton" type="Button" parent="HBoxContainer2/HBoxContainer/UpgradeColumn2"]
+layout_mode = 2
+text = "Buy"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer2/HBoxContainer/UpgradeColumn2"]
+custom_minimum_size = Vector2(10, 300)
+layout_mode = 2
+value = 50.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("2_hvx5y")
+texture_progress = ExtResource("3_8ve5o")
+
+[node name="UpgradeColumn3" type="VBoxContainer" parent="HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("1_du3q1")
+upgradeName = "jump_force"
+showedName = "jump force"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/HBoxContainer/UpgradeColumn3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("6_ji87l")
+expand_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/HBoxContainer/UpgradeColumn3"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]jump force
+999$
+"
+fit_content = true
+scroll_active = false
+
+[node name="BuyButton" type="Button" parent="HBoxContainer2/HBoxContainer/UpgradeColumn3"]
+layout_mode = 2
+text = "Buy"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer2/HBoxContainer/UpgradeColumn3"]
+custom_minimum_size = Vector2(10, 300)
+layout_mode = 2
+value = 50.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("2_hvx5y")
+texture_progress = ExtResource("3_8ve5o")
+
+[node name="UpgradeColumn4" type="VBoxContainer" parent="HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("1_du3q1")
+upgradeName = "jump_count"
+showedName = "jump count"
+totalLevels = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/HBoxContainer/UpgradeColumn4"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("7_wdagh")
+expand_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer2/HBoxContainer/UpgradeColumn4"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]jump count
+999$
+"
+fit_content = true
+scroll_active = false
+
+[node name="BuyButton" type="Button" parent="HBoxContainer2/HBoxContainer/UpgradeColumn4"]
+layout_mode = 2
+text = "Buy"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer2/HBoxContainer/UpgradeColumn4"]
+custom_minimum_size = Vector2(10, 300)
+layout_mode = 2
+value = 50.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("2_hvx5y")
+texture_progress = ExtResource("3_8ve5o")
+
+[connection signal="pressed" from="HBoxContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/HBoxContainer/UpgradeColumn/BuyButton" to="HBoxContainer2/HBoxContainer/UpgradeColumn" method="_on_buy_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/HBoxContainer/UpgradeColumn2/BuyButton" to="HBoxContainer2/HBoxContainer/UpgradeColumn2" method="_on_buy_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/HBoxContainer/UpgradeColumn3/BuyButton" to="HBoxContainer2/HBoxContainer/UpgradeColumn3" method="_on_buy_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/HBoxContainer/UpgradeColumn4/BuyButton" to="HBoxContainer2/HBoxContainer/UpgradeColumn4" method="_on_buy_button_pressed"]

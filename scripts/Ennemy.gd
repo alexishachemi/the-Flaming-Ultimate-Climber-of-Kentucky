@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var player = $"../Player"
 
 # Enemy settings
-var speed = 100.0
+var speed = 50.0
 var rotation_speed = 50.0  # Higher values mean quicker, smoother rotations
 var projectile_scene = preload("res://scenes/projectile.tscn")
 

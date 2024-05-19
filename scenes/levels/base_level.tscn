@@ -81,6 +81,7 @@ scale = Vector2(1.145, 1.145)
 texture = ExtResource("5_lwvip")
 
 [node name="Background4" type="Sprite2D" parent="GameCamera"]
+z_index = 1
 position = Vector2(0, -8949)
 scale = Vector2(1.145, 1.145)
 texture = ExtResource("6_nsk4w")
@@ -109,6 +110,7 @@ texture = ExtResource("9_0qtax")
 [node name="Player" parent="." instance=ExtResource("10_omap5")]
 position = Vector2(285, 258)
 scale = Vector2(0.255, 0.255)
+collision_mask = 100
 dragForce = 100.0
 speed = 20
 

@@ -191,7 +191,7 @@ height = 242.0
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(590, 231)
 collision_layer = 2
-collision_mask = 100
+collision_mask = 356
 script = ExtResource("1_euvtn")
 jumpForce = 1000
 
