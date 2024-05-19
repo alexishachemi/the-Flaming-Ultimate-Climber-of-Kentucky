@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dl2f8lc6amcyk"]
+[gd_scene load_steps=28 format=3 uid="uid://dl2f8lc6amcyk"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_euvtn"]
 [ext_resource type="Texture2D" uid="uid://5n828npq6vk1" path="res://ressources/player/blue_body_squircle.png" id="2_wbolo"]
@@ -184,12 +184,15 @@ _data = {
 "Invincibility": SubResource("Animation_gjnpb")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbwac"]
+radius = 87.0
+height = 242.0
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(590, 231)
 collision_layer = 2
 collision_mask = 100
 script = ExtResource("1_euvtn")
-speed = 100
 jumpForce = 1000
 
 [node name="rightHand" type="Node2D" parent="."]
@@ -321,6 +324,17 @@ libraries = {
 "": SubResource("AnimationLibrary_mh63t")
 }
 
+[node name="PowerUp" type="Timer" parent="."]
+one_shot = true
+
+[node name="PowerUpZone" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowerUpZone"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tbwac")
+
 [connection signal="animation_finished" from="rightHand/beatPulse" to="." method="_on_beat_pulsed"]
 [connection signal="area_entered" from="rightHand/grabBox" to="." method="_on_right_grab_box_entered"]
 [connection signal="area_exited" from="rightHand/grabBox" to="." method="_on_right_grab_box_exited"]
@@ -330,3 +344,4 @@ libraries = {
 [connection signal="timeout" from="grabDrain" to="." method="_on_grab_drain_timeout"]
 [connection signal="timeout" from="grabReplenish" to="." method="_on_grab_replenish_timeout"]
 [connection signal="timeout" from="Invincibility" to="." method="_on_invincibility_timeout"]
+[connection signal="timeout" from="PowerUp" to="." method="_on_power_up_timeout"]
