@@ -59,6 +59,7 @@ script = ExtResource("2_os0r1")
 
 [node name="EscMenu" parent="GameCamera" instance=ExtResource("3_xj2tw")]
 visible = false
+z_index = 2
 
 [node name="zoom_effect" type="AnimationPlayer" parent="GameCamera"]
 libraries = {

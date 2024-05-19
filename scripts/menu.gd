@@ -16,12 +16,18 @@ func _ready():
 	if Global.gameStarted == true:
 		bg.position.y = 0
 		lvlSel.visible = true
+		butts.visible = false
+		started = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
-		butts.visible = true
-		Global.gameStarted = true
+		if Global.gameStarted and (butts.visible == false):
+			butts.visible = true
+			lvlSel.visible = false
+		else:
+			butts.visible = true
+			Global.gameStarted = true
 			
 	if bg.position.y > 0:
 		bg.position.y -= speed * delta

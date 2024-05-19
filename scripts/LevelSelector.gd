@@ -12,6 +12,7 @@ func _ready():
 	lvl2Btn.visible = Global.player_level >= 1
 	lvl3Btn.visible = Global.player_level >= 2
 
+
 func _on_lvl_1_button_pressed():
 	Global.currentLevel = 1
 	get_tree().change_scene_to_file("res://scenes/levels/level01.tscn")
