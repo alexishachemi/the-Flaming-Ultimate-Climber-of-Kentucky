@@ -3,6 +3,14 @@ extends CharacterBody2D
 signal healthChanged
 signal staminaChanged
 
+signal levelFailed
+
+var lifes : int = 3
+
+@onready var hearth1 = $CanvasLayer/TextureRect
+@onready var hearth2 = $CanvasLayer/TextureRect2
+@onready var hearth3 = $CanvasLayer/TextureRect3
+
 @export var damagedInvSeconds: float = 2
 
 @export_group("Apearance")
@@ -332,9 +340,16 @@ func set_ghost_mode(ghost):
 	set_collision_mask_value(7, not ghost)
 
 func die():
-	set_state(STATE.DIE)
-	velocity.y = -jumpForce / 2
-	set_ghost_mode(true)
+	lifes -= 1
+	if lifes < 3:
+		hearth3.visible = false
+	if lifes < 2:
+		hearth2.visible = false
+	if lifes < 1:
+		hearth1.visible = false
+	if lifes < 0:
+		levelFailed.emit()
+
 
 func _on_invincibility_timeout():
 	$InvincibilityAnim.stop()
@@ -348,12 +363,18 @@ func hurt(damage: float):
 	currentHealth -= damage
 	$Invincibility.start()
 	healthChanged.emit()
+	if currentHealth <= 0:
+		set_state(STATE.DIE)
+		velocity.y = -jumpForce / 2
+		set_ghost_mode(true)
 
 func reset():
 	set_ghost_mode(false)
 	currentHealth = maxHealth
 	currentStamina = maxStamina
 	currentJumps = airJumps
+	staminaChanged.emit()
+	healthChanged.emit()
 
 func _ready():
 	var beatMover = get_parent().find_child("BeatMover")

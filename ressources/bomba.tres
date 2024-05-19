@@ -1,0 +1,51 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://bm4cirtvxgkag"]
+
+[ext_resource type="Texture2D" uid="uid://djdcbl21w1hd5" path="res://ressources/kenney_smoke-particles/PNG/Explosion/explosion00.png" id="1_77b2n"]
+[ext_resource type="Texture2D" uid="uid://thju5odimkv8" path="res://ressources/kenney_smoke-particles/PNG/Explosion/explosion01.png" id="2_v1mjs"]
+[ext_resource type="Texture2D" uid="uid://04dxnhc4qegm" path="res://ressources/kenney_smoke-particles/PNG/Explosion/explosion02.png" id="3_qdww0"]
+[ext_resource type="Texture2D" uid="uid://ccyllcyp3lqoa" path="res://ressources/kenney_smoke-particles/PNG/Explosion/explosion03.png" id="4_34hjy"]
+[ext_resource type="Texture2D" uid="uid://bw6wl7cr5a536" path="res://ressources/kenney_smoke-particles/PNG/Explosion/explosion04.png" id="5_6yew2"]
+[ext_resource type="Texture2D" uid="uid://dknm0c5re1d1o" path="res://ressources/kenney_smoke-particles/PNG/Explosion/explosion05.png" id="6_fx7cy"]
+[ext_resource type="Texture2D" uid="uid://bch22k2wrou58" path="res://ressources/kenney_smoke-particles/PNG/Explosion/explosion06.png" id="7_63skx"]
+[ext_resource type="Texture2D" uid="uid://bicsqsbh8ee6g" path="res://ressources/kenney_smoke-particles/PNG/Explosion/explosion07.png" id="8_jynk8"]
+[ext_resource type="Texture2D" uid="uid://ch846hy3jcha8" path="res://ressources/kenney_smoke-particles/PNG/Explosion/explosion08.png" id="9_0sy1x"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_77b2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_v1mjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qdww0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_34hjy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6yew2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fx7cy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_63skx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jynk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0sy1x")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 16.0
+}]
