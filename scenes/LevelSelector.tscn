@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddojplmkgujc7"]
+[gd_scene load_steps=3 format=3 uid="uid://ddojplmkgujc7"]
 
 [ext_resource type="Script" path="res://scripts/LevelSelector.gd" id="1_j86we"]
+[ext_resource type="PackedScene" uid="uid://bhj2obbwggsae" path="res://scenes/shop.tscn" id="2_godiu"]
 
 [node name="LevelSelector" type="Control"]
 layout_mode = 3
@@ -12,6 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_j86we")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 455.0
 offset_top = 266.0
 offset_right = 697.0
@@ -51,6 +53,10 @@ text = "Level 3"
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Shop"
+
+[node name="Shop" parent="." instance=ExtResource("2_godiu")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/lvl1Button" to="." method="_on_lvl_1_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/lvl2Button" to="." method="_on_lvl_2_button_pressed"]
