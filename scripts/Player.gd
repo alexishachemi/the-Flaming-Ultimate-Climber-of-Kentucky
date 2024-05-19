@@ -1,18 +1,32 @@
 extends CharacterBody2D
 
+signal healthChanged
+signal staminaChanged
 
+@export_group("Apearance")
 @export_enum("blue", "green", "purple", "pink")
 var color: String = "blue"
-
 @export var rightHand: HAND = HAND.CLOSED
 @export var leftHand: HAND = HAND.CLOSED
 
-@export var speed: int = 10
-@export var jumpForce: int = 300
+@export_group("Physics")
 @export var gravityForce: int = 1
 @export var dragForce: float = 100
 @export var maxVel: Vector2 = Vector2(500, 1000)
 @export var maxGrabDist: float = 100
+
+@export_group("Stats")
+@export var maxHealth: int = 100
+@export var speed: int = 10
+@export var jumpForce: int = 300
+@export var airJumps: int = 1
+@export var stamina: float = 100
+@export var staminaDrain: float = 5
+
+var currentHealth = maxHealth
+var currentStamina = stamina
+var currentJumps = airJumps
+
 var direction: int = 1
 const HAND_MAX_ROTATION: float = 60
 var handRotation: float = 0
@@ -20,7 +34,7 @@ var handRotation: float = 0
 var out: bool = false
 enum HAND {OPENED, CLOSED, ROCKING}
 enum FACE {ANGRY, ANNOYED, CONFIDENT, DEAD, HAPPY, MALICIOUS, SCARED}
-enum STATE {GROUND, AIR, J_AIR, DJ_AIR, GRAB, BLAZE}
+enum STATE {GROUND, AIR, GRAB, DIE}
 var state: STATE = STATE.GROUND
 
 var grabbing: bool = true
@@ -31,6 +45,7 @@ var mouseGrabPoint: Vector2
 var grabJumped:bool = false
 
 var onBeat: bool = false
+var onHit: bool = false
 
 func set_color(new_color: String):
 	color = new_color
@@ -125,18 +140,23 @@ func move_hands():
 		$leftHand.look_at(mouse_pos)
 		handRotation = clamp($leftHand.rotation_degrees, -HAND_MAX_ROTATION, HAND_MAX_ROTATION)
 		$leftHand.rotation_degrees = -handRotation
+	if state == STATE.DIE:
+		return
 	if can_grab() and state != STATE.GRAB:
 		set_hand(HAND.OPENED, rightHandGrabbing)
 	grab()
 
 func set_state(new_state: STATE):
 	state = new_state
+	set_face(FACE.HAPPY)
+	set_hands(HAND.CLOSED)
 	match state:
 		STATE.GRAB:
 			set_face(FACE.SCARED)
-		_:
-			set_face(FACE.HAPPY)
-			set_hands(HAND.CLOSED)
+		STATE.GROUND:
+			currentJumps = airJumps
+		STATE.DIE:
+			set_face(FACE.DEAD)
 
 func set_hand(action: HAND, is_right: bool):
 	$leftHand.show()
@@ -154,42 +174,70 @@ func set_hands(action: HAND):
 
 func jump():
 	match state:
-		STATE.GROUND: set_state(STATE.J_AIR)
-		STATE.AIR: set_state(STATE.J_AIR)
-		STATE.J_AIR: set_state(STATE.DJ_AIR)
+		STATE.GROUND: pass
+		STATE.AIR:
+			if currentJumps <= 0:
+				return
+			currentJumps -= 1
 		STATE.GRAB:
 			grabJumped = true
-			set_state(STATE.J_AIR)
+			currentJumps = airJumps
+			set_state(STATE.AIR)
 		_: return
 	velocity.y = -jumpForce
 
 func move_body():
+	var drag = 0.0
+
 	if Input.is_action_just_released("grab"):
 		grabJumped = false
 	if Input.is_action_just_pressed("jump"):
 		jump()
 	if state == STATE.GRAB:
+		currentJumps = airJumps
 		velocity = Vector2.ZERO
 		return
-	var drag = min(abs(velocity.x), dragForce)
-	if state != STATE.GROUND and is_on_floor():
-		set_state(STATE.GROUND)
+	if not state in [STATE.GRAB, STATE.DIE]:
+		if is_on_floor():
+			set_state(STATE.GROUND)
+		else:
+			set_state(STATE.AIR)
 	direction = 0
 	if Input.is_action_pressed("move_left"):
 		direction += -1
 	if Input.is_action_pressed("move_right"):
 		direction += 1
+	drag = min(abs(velocity.x), dragForce)
 	if velocity.x > 0:
 		drag *= -1
-	if state == STATE.GROUND:
+	if is_on_floor() and direction == 0:
 		velocity.x += drag
-	velocity.x += direction * speed
+	if state != STATE.DIE:
+		velocity.x += direction * speed
 	velocity.y += gravityForce
 	velocity = velocity.clamp(-maxVel, maxVel)
 
 func _on_BeatMover_beat(beats_passed):
 	if beats_passed % 2 == 0:
 		beat()
+
+func set_ghost_mode(ghost):
+	set_collision_layer_value(2, not ghost)
+	set_collision_mask_value(3, not ghost)
+	set_collision_mask_value(4, not ghost)
+	set_collision_mask_value(5, not ghost)
+	set_collision_mask_value(6, not ghost)
+
+func die():
+	set_state(STATE.DIE)
+	velocity.y = -jumpForce / 2
+	set_ghost_mode(true)
+
+func reset():
+	set_ghost_mode(false)
+	currentHealth = maxHealth
+	currentStamina = stamina
+	currentJumps = airJumps
 
 func _ready():
 	var beatMover = get_parent().find_child("BeatMover")
@@ -200,6 +248,7 @@ func _ready():
 	var notifier = VisibleOnScreenEnabler2D.new()
 	add_child(notifier)
 	notifier.connect("screen_exited", _on_ScreenExited)
+	reset()
 
 func _on_ScreenExited():
 	out = true
@@ -208,7 +257,7 @@ func _on_ScreenExited():
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
-		beat()
+		die()
 	move_body()
 	move_hands()
 	move_and_slide()
