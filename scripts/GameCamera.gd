@@ -16,7 +16,7 @@ var initBG3;
 var initBG4;
 
 # Offsets for parallax scrolling
-var parallax_offsets = [-1.05, -1.1, -1.2, -1.4]
+var parallax_offsets = [-1.1, -1.2, -1.4, -1.8]
 
 # Signal connection (assuming the BeatMover emits 'beat' and the camera is a child or reachable by the BeatMover)
 func _ready():
