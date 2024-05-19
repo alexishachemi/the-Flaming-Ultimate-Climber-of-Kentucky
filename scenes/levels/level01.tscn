@@ -73,73 +73,82 @@ position = Vector2(128, -1728)
 [node name="Platform17" parent="." index="22" instance=ExtResource("2_cjyyo")]
 position = Vector2(480, -2480)
 
-[node name="Platform18" parent="." index="23" instance=ExtResource("2_cjyyo")]
+[node name="Platform19" parent="." index="23" instance=ExtResource("2_cjyyo")]
+position = Vector2(-88, -2344)
+
+[node name="Platform20" parent="." index="24" instance=ExtResource("2_cjyyo")]
+position = Vector2(-232, -2424)
+
+[node name="Platform21" parent="." index="25" instance=ExtResource("2_cjyyo")]
+position = Vector2(-360, -2552)
+
+[node name="Platform18" parent="." index="26" instance=ExtResource("2_cjyyo")]
 position = Vector2(200, -2584)
 
-[node name="Platform_ro_45_" parent="." index="24" instance=ExtResource("3_ywbht")]
+[node name="Platform_ro_45_" parent="." index="27" instance=ExtResource("3_ywbht")]
 position = Vector2(-272, -112)
 target_rotation_degrees = 180.0
 speed = 30.0
 
-[node name="Platform_sca_x4y2" parent="." index="25" instance=ExtResource("4_1o0p6")]
+[node name="Platform_sca_x4y2" parent="." index="28" instance=ExtResource("4_1o0p6")]
 position = Vector2(104, -112)
 
-[node name="Platform_sca_x4y3" parent="." index="26" instance=ExtResource("4_1o0p6")]
+[node name="Platform_sca_x4y3" parent="." index="29" instance=ExtResource("4_1o0p6")]
 position = Vector2(-8, -1024)
 rotation = -0.812305
 beatModulo = 2
 
-[node name="Platform_sca_x4y4" parent="." index="27" instance=ExtResource("4_1o0p6")]
+[node name="Platform_sca_x4y4" parent="." index="30" instance=ExtResource("4_1o0p6")]
 position = Vector2(176, -1200)
 rotation = -0.85801
 beatModulo = 2
 invert = true
 
-[node name="Platform_sca_x4y5" parent="." index="28" instance=ExtResource("4_1o0p6")]
+[node name="Platform_sca_x4y5" parent="." index="31" instance=ExtResource("4_1o0p6")]
 position = Vector2(88, -1288)
 rotation = -0.0467299
 beatModulo = 2
 invert = true
 
-[node name="Platform_sca_x4y6" parent="." index="29" instance=ExtResource("4_1o0p6")]
+[node name="Platform_sca_x4y6" parent="." index="32" instance=ExtResource("4_1o0p6")]
 position = Vector2(-80, -1360)
 rotation = 0.630404
 beatModulo = 2
 invert = true
 
-[node name="Platform_ro_minus_45" parent="." index="30" instance=ExtResource("5_tc1gg")]
+[node name="Platform_ro_minus_45" parent="." index="33" instance=ExtResource("5_tc1gg")]
 position = Vector2(24, -272)
 target_rotation_degrees = 180.0
 speed = 50.0
 
-[node name="Platform_ro_minus_46" parent="." index="31" instance=ExtResource("5_tc1gg")]
+[node name="Platform_ro_minus_46" parent="." index="34" instance=ExtResource("5_tc1gg")]
 position = Vector2(48, -576)
 
-[node name="Platform_ro_minus_47" parent="." index="32" instance=ExtResource("5_tc1gg")]
+[node name="Platform_ro_minus_47" parent="." index="35" instance=ExtResource("5_tc1gg")]
 position = Vector2(-120, -624)
 
-[node name="Platform_ro_minus_49" parent="." index="33" instance=ExtResource("5_tc1gg")]
+[node name="Platform_ro_minus_49" parent="." index="36" instance=ExtResource("5_tc1gg")]
 position = Vector2(-80, -1856)
 
-[node name="Platform_ro_minus_50" parent="." index="34" instance=ExtResource("5_tc1gg")]
+[node name="Platform_ro_minus_50" parent="." index="37" instance=ExtResource("5_tc1gg")]
 position = Vector2(64, -2048)
 
-[node name="Platform_ro_minus_51" parent="." index="35" instance=ExtResource("5_tc1gg")]
+[node name="Platform_ro_minus_51" parent="." index="38" instance=ExtResource("5_tc1gg")]
 position = Vector2(24, -2184)
 
-[node name="Platform_ro_minus_52" parent="." index="36" instance=ExtResource("5_tc1gg")]
+[node name="Platform_ro_minus_52" parent="." index="39" instance=ExtResource("5_tc1gg")]
 position = Vector2(152, -2296)
 
-[node name="Platform_ro_minus_53" parent="." index="37" instance=ExtResource("5_tc1gg")]
+[node name="Platform_ro_minus_53" parent="." index="40" instance=ExtResource("5_tc1gg")]
 position = Vector2(184, -2448)
 rotation = -1.87484
 beatModulo = 2
 invert = true
 
-[node name="Platform_ro_minus_48" parent="." index="38" instance=ExtResource("5_tc1gg")]
+[node name="Platform_ro_minus_48" parent="." index="41" instance=ExtResource("5_tc1gg")]
 position = Vector2(160, -688)
 
-[node name="Bomb" type="Area2D" parent="." index="39"]
+[node name="Bomb" type="Area2D" parent="." index="42"]
 position = Vector2(240, -32)
 scale = Vector2(0.0426667, 0.0473333)
 collision_layer = 32
@@ -154,7 +163,7 @@ shape = SubResource("CircleShape2D_fyi1l")
 
 [node name="Timer" type="Timer" parent="Bomb" index="2"]
 
-[node name="Ennemy" type="CharacterBody2D" parent="." index="40"]
+[node name="Ennemy" type="CharacterBody2D" parent="." index="43"]
 z_index = 1
 position = Vector2(0, -300)
 collision_layer = 8
@@ -169,39 +178,39 @@ texture = ExtResource("9_x7y1w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ennemy" index="1"]
 shape = SubResource("RectangleShape2D_hntwm")
 
-[node name="Checkpoint" parent="." index="41" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint" parent="." index="44" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(-415, -104)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint2" parent="." index="42" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint2" parent="." index="45" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(437, -304)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint3" parent="." index="43" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint3" parent="." index="46" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(352, -728)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint4" parent="." index="44" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint4" parent="." index="47" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(-376, -1056)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint5" parent="." index="45" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint5" parent="." index="48" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(360, -1336)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint7" parent="." index="46" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint7" parent="." index="49" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(328, -1856)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint8" parent="." index="47" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint8" parent="." index="50" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(-288, -2144)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint9" parent="." index="48" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint9" parent="." index="51" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(328, -2400)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint10" parent="." index="49" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint10" parent="." index="52" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(8, -2648)
 scale = Vector2(0.5, 0.5)
 
