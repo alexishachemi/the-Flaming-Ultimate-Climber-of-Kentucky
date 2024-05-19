@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqgfyycvjynit"]
+[gd_scene load_steps=15 format=3 uid="uid://dqgfyycvjynit"]
 
 [ext_resource type="PackedScene" uid="uid://d0lktis282tns" path="res://scenes/levels/base_level.tscn" id="1_bjy2e"]
 [ext_resource type="PackedScene" uid="uid://dnq8ac5o6m1y3" path="res://level/platform.tscn" id="2_cjyyo"]
-[ext_resource type="PackedScene" uid="uid://b25mj54tafmd3" path="res://level/Canon.tscn" id="2_rn6ya"]
+[ext_resource type="PackedScene" path="res://level/Canon.tscn" id="2_rn6ya"]
 [ext_resource type="PackedScene" uid="uid://bu6skg6p85u5q" path="res://level/platform_ro_45.tscn" id="3_ywbht"]
 [ext_resource type="PackedScene" uid="uid://bamxnkbkuvk1p" path="res://level/platform_sca_x4y2.tscn" id="4_1o0p6"]
 [ext_resource type="PackedScene" uid="uid://dmhoyxpm1o0yv" path="res://level/platform_ro_minus_45.tscn" id="5_tc1gg"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/Ennemy.gd" id="8_d6nk7"]
 [ext_resource type="Texture2D" uid="uid://du2b1fdqtrv65" path="res://ressources/ennemy.png" id="9_x7y1w"]
 [ext_resource type="PackedScene" uid="uid://buqrjnjki86im" path="res://scenes/checkpoint.tscn" id="10_anhf0"]
+[ext_resource type="PackedScene" uid="uid://c82w556ffjpfc" path="res://scenes/powerups/chicken.tscn" id="11_x46bm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fyi1l"]
 radius = 1686.45
@@ -23,8 +24,6 @@ radius = 1686.45
 position = Vector2(-32, -2024)
 
 [node name="Player" parent="." index="4"]
-speed = 100
-jumpForce = 500
 dragForce = 150.0
 
 [node name="Platform" parent="." index="6" instance=ExtResource("2_cjyyo")]
@@ -104,25 +103,18 @@ position = Vector2(104, -112)
 [node name="Platform_sca_x4y3" parent="." index="30" instance=ExtResource("4_1o0p6")]
 position = Vector2(-72, -976)
 rotation = -0.136839
-beatModulo = 4
 
 [node name="Platform_sca_x4y4" parent="." index="31" instance=ExtResource("4_1o0p6")]
 position = Vector2(168, -1080)
 rotation = -0.450181
-beatModulo = 4
-invert = true
 
 [node name="Platform_sca_x4y5" parent="." index="32" instance=ExtResource("4_1o0p6")]
 position = Vector2(88, -1288)
 rotation = -0.0467299
-beatModulo = 2
-invert = true
 
 [node name="Platform_sca_x4y6" parent="." index="33" instance=ExtResource("4_1o0p6")]
 position = Vector2(-80, -1360)
 rotation = 0.630404
-beatModulo = 2
-invert = true
 
 [node name="Platform_ro_minus_45" parent="." index="34" instance=ExtResource("5_tc1gg")]
 position = Vector2(24, -272)
@@ -150,8 +142,6 @@ position = Vector2(152, -2296)
 [node name="Platform_ro_minus_53" parent="." index="41" instance=ExtResource("5_tc1gg")]
 position = Vector2(184, -2448)
 rotation = -1.87484
-beatModulo = 2
-invert = true
 
 [node name="Platform_ro_minus_48" parent="." index="42" instance=ExtResource("5_tc1gg")]
 position = Vector2(160, -688)
@@ -225,5 +215,8 @@ scale = Vector2(0.5, 0.5)
 [node name="Canon" parent="." index="54" instance=ExtResource("2_rn6ya")]
 position = Vector2(-64, -1560)
 rotation = 2.0576
+
+[node name="chicken" parent="." index="55" instance=ExtResource("11_x46bm")]
+position = Vector2(436, 255)
 
 [connection signal="body_entered" from="Bomb" to="Bomb" method="_on_body_entered"]

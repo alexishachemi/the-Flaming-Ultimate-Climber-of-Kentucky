@@ -36,7 +36,6 @@ func explode():
 				var force = vec_to_body.normalized() * (explosion_force * (1 - distance / explosion_radius))
 				#body.apply_impulse(force, Vector2())
 				body.velocity += force * 1000
-				print(force)
 	queue_free()
 
 

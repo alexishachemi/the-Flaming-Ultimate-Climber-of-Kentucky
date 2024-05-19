@@ -1,18 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bct1265c3ylmq"]
+[gd_scene load_steps=7 format=3 uid="uid://bn3fllm4grscj"]
 
 [ext_resource type="PackedScene" uid="uid://d0lktis282tns" path="res://scenes/levels/base_level.tscn" id="1_u4wrj"]
-[ext_resource type="PackedScene" uid="uid://ki656jchho1b" path="res://level/platform_grabable.tscn" id="2_u8vfm"]
+[ext_resource type="PackedScene" path="res://level/platform_grabable.tscn" id="2_u8vfm"]
 [ext_resource type="PackedScene" uid="uid://buqrjnjki86im" path="res://scenes/checkpoint.tscn" id="3_lx1i4"]
 [ext_resource type="PackedScene" uid="uid://2lcyj1uallj3" path="res://level/platform_ro_minus_90.tscn" id="4_eusj2"]
-[ext_resource type="PackedScene" uid="uid://b25mj54tafmd3" path="res://level/Canon.tscn" id="4_qxpme"]
+[ext_resource type="PackedScene" path="res://level/Canon.tscn" id="4_qxpme"]
 [ext_resource type="PackedScene" uid="uid://dmhoyxpm1o0yv" path="res://level/platform_ro_minus_45.tscn" id="5_nfhjr"]
 
 [node name="BaseLevel" instance=ExtResource("1_u4wrj")]
-
-[node name="Player" parent="." index="4"]
-speed = 100
-jumpForce = 500
-dragForce = 150.0
 
 [node name="Platform_grab" parent="." index="6" instance=ExtResource("2_u8vfm")]
 position = Vector2(-88, 144)
