@@ -23,9 +23,9 @@ radius = 1686.45
 position = Vector2(-32, -2024)
 
 [node name="Player" parent="." index="4"]
-speed = 100
-jumpForce = 500
 dragForce = 150.0
+speed = 80
+jumpForce = 500
 
 [node name="Platform" parent="." index="6" instance=ExtResource("2_cjyyo")]
 position = Vector2(-192, 56)
@@ -221,6 +221,7 @@ scale = Vector2(0.5, 0.5)
 [node name="Checkpoint10" parent="." index="53" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(8, -2648)
 scale = Vector2(0.5, 0.5)
+finalCheckPoint = true
 
 [node name="Canon" parent="." index="54" instance=ExtResource("2_rn6ya")]
 position = Vector2(-64, -1560)
