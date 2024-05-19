@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b25mj54tafmd3"]
+
+[ext_resource type="Texture2D" uid="uid://ckcwrab2jrts3" path="res://ressources/hand/bbq_hand.png" id="1_f0qql"]
+[ext_resource type="Script" path="res://scripts/canon.gd" id="1_vqmjo"]
+
+[node name="Canon" type="Node2D"]
+script = ExtResource("1_vqmjo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 2.06641
+scale = Vector2(0.166341, 0.242463)
+texture = ExtResource("1_f0qql")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(4, 2)
+scale = Vector2(13.7852, 2.20382)
