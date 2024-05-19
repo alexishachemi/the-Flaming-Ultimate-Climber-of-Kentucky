@@ -199,7 +199,6 @@ script = ExtResource("1_euvtn")
 metadata/_edit_group_ = true
 
 [node name="sprite" type="AnimatedSprite2D" parent="rightHand"]
-visible = false
 position = Vector2(149, 0)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
@@ -225,6 +224,7 @@ position = Vector2(-4.0015, -590)
 shape = SubResource("CircleShape2D_12ofr")
 
 [node name="wing" type="Sprite2D" parent="rightHand"]
+visible = false
 position = Vector2(162, 1.31)
 scale = Vector2(0.31, 0.31)
 texture = ExtResource("3_h5rib")
@@ -233,7 +233,6 @@ flip_h = true
 [node name="leftHand" type="Node2D" parent="."]
 
 [node name="sprite" type="AnimatedSprite2D" parent="leftHand"]
-visible = false
 position = Vector2(-149, 0)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
@@ -259,6 +258,7 @@ libraries = {
 speed_scale = 3.5
 
 [node name="wing" type="Sprite2D" parent="leftHand"]
+visible = false
 position = Vector2(-162, 1)
 scale = Vector2(0.310469, 0.310469)
 texture = ExtResource("3_h5rib")
