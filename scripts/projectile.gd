@@ -9,3 +9,8 @@ func _ready():
 
 func _on_ScreenExited():
 	queue_free()  # Deletes the object
+
+
+func _on_area_2d_body_entered(body):
+	if body is CharacterBody2D:
+		body.hurt(20)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqgfyycvjynit"]
+[gd_scene load_steps=9 format=3 uid="uid://dqgfyycvjynit"]
 
 [ext_resource type="PackedScene" uid="uid://d0lktis282tns" path="res://scenes/levels/base_level.tscn" id="1_bjy2e"]
 [ext_resource type="PackedScene" uid="uid://dnq8ac5o6m1y3" path="res://level/platform.tscn" id="2_cjyyo"]
@@ -6,16 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bu6skg6p85u5q" path="res://level/platform_ro_45.tscn" id="3_ywbht"]
 [ext_resource type="PackedScene" uid="uid://bamxnkbkuvk1p" path="res://level/platform_sca_x4y2.tscn" id="4_1o0p6"]
 [ext_resource type="PackedScene" uid="uid://dmhoyxpm1o0yv" path="res://level/platform_ro_minus_45.tscn" id="5_tc1gg"]
-[ext_resource type="Script" path="res://scripts/Bomb.gd" id="6_dh6s8"]
-[ext_resource type="Texture2D" uid="uid://di1r4ux172y2f" path="res://ressources/bomb.png" id="7_u2xos"]
-[ext_resource type="Script" path="res://scripts/Ennemy.gd" id="8_d6nk7"]
-[ext_resource type="Texture2D" uid="uid://du2b1fdqtrv65" path="res://ressources/ennemy.png" id="9_x7y1w"]
+[ext_resource type="PackedScene" uid="uid://byle47c813cwy" path="res://scenes/ennemy.tscn" id="8_w64ti"]
 [ext_resource type="PackedScene" uid="uid://buqrjnjki86im" path="res://scenes/checkpoint.tscn" id="10_anhf0"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fyi1l"]
-radius = 1686.45
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hntwm"]
 
 [node name="BaseLevel" instance=ExtResource("1_bjy2e")]
 
@@ -23,9 +15,8 @@ radius = 1686.45
 position = Vector2(-32, -2024)
 
 [node name="Player" parent="." index="4"]
-speed = 100
-jumpForce = 500
 dragForce = 150.0
+speed = 100
 
 [node name="Platform" parent="." index="6" instance=ExtResource("2_cjyyo")]
 position = Vector2(-192, 56)
@@ -156,74 +147,44 @@ invert = true
 [node name="Platform_ro_minus_48" parent="." index="42" instance=ExtResource("5_tc1gg")]
 position = Vector2(160, -688)
 
-[node name="Bomb" type="Area2D" parent="." index="43"]
-position = Vector2(240, -32)
-scale = Vector2(0.0426667, 0.0473333)
-collision_layer = 32
-collision_mask = 2
-script = ExtResource("6_dh6s8")
+[node name="Ennemy" parent="." index="43" instance=ExtResource("8_w64ti")]
 
-[node name="BombSprite" type="Sprite2D" parent="Bomb" index="0"]
-texture = ExtResource("7_u2xos")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bomb" index="1"]
-shape = SubResource("CircleShape2D_fyi1l")
-
-[node name="Timer" type="Timer" parent="Bomb" index="2"]
-
-[node name="Ennemy" type="CharacterBody2D" parent="." index="44"]
-z_index = 1
-position = Vector2(0, -300)
-collision_layer = 8
-collision_mask = 0
-script = ExtResource("8_d6nk7")
-
-[node name="EnnemySprite" type="Sprite2D" parent="Ennemy" index="0"]
-position = Vector2(-15, -25)
-scale = Vector2(0.15625, 0.15625)
-texture = ExtResource("9_x7y1w")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ennemy" index="1"]
-shape = SubResource("RectangleShape2D_hntwm")
-
-[node name="Checkpoint" parent="." index="45" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint" parent="." index="44" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(-415, -104)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint2" parent="." index="46" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint2" parent="." index="45" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(437, -304)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint3" parent="." index="47" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint3" parent="." index="46" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(352, -728)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint4" parent="." index="48" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint4" parent="." index="47" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(-344, -992)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint5" parent="." index="49" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint5" parent="." index="48" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(360, -1336)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint7" parent="." index="50" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint7" parent="." index="49" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(328, -1856)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint8" parent="." index="51" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint8" parent="." index="50" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(-288, -2144)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint9" parent="." index="52" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint9" parent="." index="51" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(328, -2400)
 scale = Vector2(0.5, 0.5)
 
-[node name="Checkpoint10" parent="." index="53" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
+[node name="Checkpoint10" parent="." index="52" groups=["checkpoints"] instance=ExtResource("10_anhf0")]
 position = Vector2(8, -2648)
 scale = Vector2(0.5, 0.5)
 
-[node name="Canon" parent="." index="54" instance=ExtResource("2_rn6ya")]
+[node name="Canon" parent="." index="53" instance=ExtResource("2_rn6ya")]
 position = Vector2(-64, -1560)
 rotation = 2.0576
-
-[connection signal="body_entered" from="Bomb" to="Bomb" method="_on_body_entered"]

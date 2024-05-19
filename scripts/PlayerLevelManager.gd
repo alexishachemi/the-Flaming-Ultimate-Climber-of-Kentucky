@@ -24,8 +24,10 @@ func _on_Checkpoint_reached(checkpoint_position):
 func _process(delta):
 	# Check if the player leaves the screen and teleport them back.
 	if player.out:
+		player.die()
 		teleport_player_to_checkpoint()
 		player.out = false
+		player.reset()
 
 
 func teleport_player_to_checkpoint():
