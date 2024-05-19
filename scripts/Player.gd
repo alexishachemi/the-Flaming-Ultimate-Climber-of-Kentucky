@@ -248,9 +248,8 @@ func _on_BeatMover_beat(beats_passed):
 func set_ghost_mode(ghost):
 	set_collision_layer_value(2, not ghost)
 	set_collision_mask_value(3, not ghost)
-	set_collision_mask_value(4, not ghost)
-	set_collision_mask_value(5, not ghost)
 	set_collision_mask_value(6, not ghost)
+	set_collision_mask_value(7, not ghost)
 
 func die():
 	set_state(STATE.DIE)
