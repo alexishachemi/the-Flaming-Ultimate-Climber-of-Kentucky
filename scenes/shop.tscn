@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhj2obbwggsae"]
+[gd_scene load_steps=10 format=3 uid="uid://bhj2obbwggsae"]
 
 [ext_resource type="Script" path="res://scripts/UpgradeColumn.gd" id="1_du3q1"]
 [ext_resource type="Script" path="res://scripts/MoneyLabel.gd" id="1_fh72q"]
+[ext_resource type="Script" path="res://scripts/shop.gd" id="1_x6ymc"]
 [ext_resource type="Texture2D" uid="uid://cmnsjt7ljgmqr" path="res://ressources/bars/healthbarUnder.png" id="2_hvx5y"]
 [ext_resource type="Texture2D" uid="uid://d00u44gkjq5jh" path="res://ressources/hearthIcon.png" id="2_p3mcf"]
 [ext_resource type="Texture2D" uid="uid://bdrenr4510gvl" path="res://ressources/bars/upgradeProgress.png" id="3_8ve5o"]
@@ -16,8 +17,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_x6ymc")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 165.0
 offset_top = 43.0
 offset_right = 949.0
@@ -37,6 +40,12 @@ offset_right = 206.0
 offset_bottom = 244.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Button" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back"
 
 [node name="MoneyLabel" type="RichTextLabel" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(200, 200)
@@ -208,6 +217,7 @@ stretch_margin_bottom = 4
 texture_under = ExtResource("2_hvx5y")
 texture_progress = ExtResource("3_8ve5o")
 
+[connection signal="pressed" from="HBoxContainer2/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBoxContainer2/HBoxContainer/UpgradeColumn/BuyButton" to="HBoxContainer2/HBoxContainer/UpgradeColumn" method="_on_buy_button_pressed"]
 [connection signal="pressed" from="HBoxContainer2/HBoxContainer/UpgradeColumn2/BuyButton" to="HBoxContainer2/HBoxContainer/UpgradeColumn2" method="_on_buy_button_pressed"]
 [connection signal="pressed" from="HBoxContainer2/HBoxContainer/UpgradeColumn3/BuyButton" to="HBoxContainer2/HBoxContainer/UpgradeColumn3" method="_on_buy_button_pressed"]

@@ -1,7 +1,10 @@
 extends Node
 
 # Declare your global variables
+var currentLevel: int = 0
+
 var money_owned: int = 0
+var player_level: int = 1
 var upgrades: Dictionary = {
 	"health": 0,
 	"stamina": 0,
@@ -32,6 +35,7 @@ func upgrade_feature(feature: String):
 func save_game():
 	var file = ConfigFile.new()
 	file.set_value("game", "money_owned", money_owned)
+	file.set_value("game", "level", player_level)
 	file.set_value("game", "upgrades", upgrades)
 	
 	var error = file.save("user://game_data.cfg")
@@ -45,7 +49,13 @@ func load_game():
 	
 	if error == OK:
 		money_owned = file.get_value("game", "money_owned", 0)
-		upgrades = file.get_value("game", "upgrades", {})
+		player_level = file.get_value("game", "level", 1)
+		upgrades = file.get_value("game", "upgrades", {
+			"health": 0,
+			"stamina": 0,
+			"jump_force": 0,
+			"jump_count": 0
+			})
 	else:
 		print("Failed to load game data or no save file exists.")
 
