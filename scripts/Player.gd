@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-
+signal healthChanged
+signal staminaChanged
 
 @export_group("Apearance")
 @export_enum("blue", "green", "purple", "pink")
@@ -31,7 +32,7 @@ var handRotation: float = 0
 var out: bool = false
 enum HAND {OPENED, CLOSED, ROCKING}
 enum FACE {ANGRY, ANNOYED, CONFIDENT, DEAD, HAPPY, MALICIOUS, SCARED}
-enum STATE {GROUND, AIR, J_AIR, DJ_AIR, GRAB, BLAZE}
+enum STATE {GROUND, AIR, GRAB}
 var state: STATE = STATE.GROUND
 
 var grabbing: bool = true
@@ -142,12 +143,13 @@ func move_hands():
 
 func set_state(new_state: STATE):
 	state = new_state
+	set_face(FACE.HAPPY)
+	set_hands(HAND.CLOSED)
 	match state:
 		STATE.GRAB:
 			set_face(FACE.SCARED)
-		_:
-			set_face(FACE.HAPPY)
-			set_hands(HAND.CLOSED)
+		STATE.GROUND:
+			currentJumps = airJumps
 
 func set_hand(action: HAND, is_right: bool):
 	$leftHand.show()
@@ -165,12 +167,15 @@ func set_hands(action: HAND):
 
 func jump():
 	match state:
-		STATE.GROUND: set_state(STATE.J_AIR)
-		STATE.AIR: set_state(STATE.J_AIR)
-		STATE.J_AIR: set_state(STATE.DJ_AIR)
+		STATE.GROUND: pass
+		STATE.AIR:
+			if currentJumps <= 0:
+				return
+			currentJumps -= 1
 		STATE.GRAB:
 			grabJumped = true
-			set_state(STATE.J_AIR)
+			currentJumps = airJumps
+			set_state(STATE.AIR)
 		_: return
 	velocity.y = -jumpForce
 
@@ -182,10 +187,14 @@ func move_body():
 	if Input.is_action_just_pressed("jump"):
 		jump()
 	if state == STATE.GRAB:
+		currentJumps = airJumps
 		velocity = Vector2.ZERO
 		return
-	if state != STATE.GROUND and is_on_floor():
-		set_state(STATE.GROUND)
+	if state != STATE.GRAB:
+		if is_on_floor():
+			set_state(STATE.GROUND)
+		else:
+			set_state(STATE.AIR)
 	direction = 0
 	if Input.is_action_pressed("move_left"):
 		direction += -1
