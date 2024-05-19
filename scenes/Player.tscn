@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://dl2f8lc6amcyk"]
+[gd_scene load_steps=29 format=3 uid="uid://dl2f8lc6amcyk"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_euvtn"]
 [ext_resource type="Texture2D" uid="uid://5n828npq6vk1" path="res://ressources/player/blue_body_squircle.png" id="2_wbolo"]
 [ext_resource type="Texture2D" uid="uid://r4y2r2u6b2e5" path="res://ressources/player/green_body_squircle.png" id="3_6tnoi"]
+[ext_resource type="Texture2D" uid="uid://bux0geetksh40" path="res://ressources/wing.png" id="3_h5rib"]
 [ext_resource type="Texture2D" uid="uid://b46lwev44v4r7" path="res://ressources/player/pink_body_squircle.png" id="4_fiv43"]
 [ext_resource type="Texture2D" uid="uid://bslrsv4mp6xun" path="res://ressources/player/purple_body_squircle.png" id="5_cnnok"]
 [ext_resource type="Texture2D" uid="uid://chjwoiapgy8hj" path="res://ressources/player/face_g.png" id="6_w1vvn"]
@@ -198,6 +199,7 @@ script = ExtResource("1_euvtn")
 metadata/_edit_group_ = true
 
 [node name="sprite" type="AnimatedSprite2D" parent="rightHand"]
+visible = false
 position = Vector2(149, 0)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
@@ -222,10 +224,16 @@ collision_mask = 128
 position = Vector2(-4.0015, -590)
 shape = SubResource("CircleShape2D_12ofr")
 
+[node name="wing" type="Sprite2D" parent="rightHand"]
+position = Vector2(162, 1.31)
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("3_h5rib")
+flip_h = true
+
 [node name="leftHand" type="Node2D" parent="."]
-metadata/_edit_group_ = true
 
 [node name="sprite" type="AnimatedSprite2D" parent="leftHand"]
+visible = false
 position = Vector2(-149, 0)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
@@ -249,6 +257,11 @@ libraries = {
 "": SubResource("AnimationLibrary_76ia5")
 }
 speed_scale = 3.5
+
+[node name="wing" type="Sprite2D" parent="leftHand"]
+position = Vector2(-162, 1)
+scale = Vector2(0.310469, 0.310469)
+texture = ExtResource("3_h5rib")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

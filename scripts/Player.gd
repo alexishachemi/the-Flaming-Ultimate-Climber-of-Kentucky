@@ -47,6 +47,7 @@ var oldStats: Dictionary = {
 
 var direction: int = 1
 const HAND_MAX_ROTATION: float = 60
+const FLAP_THRESHOLD = 45
 var handRotation: float = 0
 
 var out: bool = false
@@ -64,6 +65,29 @@ var grabJumped: bool = false
 
 var onBeat: bool = false
 var onHit: bool = false
+
+var lastFlappedUp = false
+var flappedUp = false
+var flappedDown = false
+
+func flap():
+	var flying: bool = isFlying > 0
+	$leftHand/sprite.visible = not flying
+	$rightHand/sprite.visible = not flying
+	$leftHand/wing.visible = flying
+	$rightHand/wing.visible = flying
+	if not flying:
+		return
+	if not lastFlappedUp and handRotation <= -FLAP_THRESHOLD:
+		flappedUp = true
+		lastFlappedUp = true
+	if lastFlappedUp and handRotation >= FLAP_THRESHOLD:
+		flappedDown = true
+		lastFlappedUp = false
+	if flappedUp and flappedDown:
+		velocity.y = -jumpForce * 3
+		flappedUp = false
+		flappedDown = false
 
 func stats_to_dict():
 	return {
@@ -367,6 +391,7 @@ func _process(delta):
 	handle_stats()
 	move_body()
 	move_hands()
+	flap()
 	move_and_slide()
 
 func _on_right_grab_box_entered(area):
