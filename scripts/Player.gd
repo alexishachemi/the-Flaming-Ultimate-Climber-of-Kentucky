@@ -16,14 +16,17 @@ var color: String = "blue"
 @export var maxGrabDist: float = 100
 
 @export_group("Stats")
+@export var maxHealth: int = 100
 @export var speed: int = 10
 @export var jumpForce: int = 300
 @export var airJumps: int = 1
 @export var stamina: float = 100
 @export var staminaDrain: float = 5
 
-var currentJumps = airJumps
+
+var currentHealth = maxHealth
 var currentStamina = stamina
+var currentJumps = airJumps
 
 var direction: int = 1
 const HAND_MAX_ROTATION: float = 60
@@ -213,6 +216,11 @@ func _on_BeatMover_beat(beats_passed):
 	if beats_passed % 2 == 0:
 		beat()
 
+func reset_stats():
+	currentHealth = maxHealth
+	currentStamina = stamina
+	currentJumps = airJumps
+
 func _ready():
 	var beatMover = get_parent().find_child("BeatMover")
 	if beatMover != null:
@@ -222,6 +230,7 @@ func _ready():
 	var notifier = VisibleOnScreenEnabler2D.new()
 	add_child(notifier)
 	notifier.connect("screen_exited", _on_ScreenExited)
+	reset_stats()
 
 func _on_ScreenExited():
 	out = true
