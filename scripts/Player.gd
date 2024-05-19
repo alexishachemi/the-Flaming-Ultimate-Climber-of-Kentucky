@@ -23,7 +23,6 @@ var color: String = "blue"
 @export var stamina: float = 100
 @export var staminaDrain: float = 5
 
-
 var currentHealth = maxHealth
 var currentStamina = stamina
 var currentJumps = airJumps
@@ -35,7 +34,7 @@ var handRotation: float = 0
 var out: bool = false
 enum HAND {OPENED, CLOSED, ROCKING}
 enum FACE {ANGRY, ANNOYED, CONFIDENT, DEAD, HAPPY, MALICIOUS, SCARED}
-enum STATE {GROUND, AIR, GRAB}
+enum STATE {GROUND, AIR, GRAB, DIE}
 var state: STATE = STATE.GROUND
 
 var grabbing: bool = true
@@ -46,6 +45,7 @@ var mouseGrabPoint: Vector2
 var grabJumped:bool = false
 
 var onBeat: bool = false
+var onHit: bool = false
 
 func set_color(new_color: String):
 	color = new_color
@@ -140,6 +140,8 @@ func move_hands():
 		$leftHand.look_at(mouse_pos)
 		handRotation = clamp($leftHand.rotation_degrees, -HAND_MAX_ROTATION, HAND_MAX_ROTATION)
 		$leftHand.rotation_degrees = -handRotation
+	if state == STATE.DIE:
+		return
 	if can_grab() and state != STATE.GRAB:
 		set_hand(HAND.OPENED, rightHandGrabbing)
 	grab()
@@ -153,6 +155,8 @@ func set_state(new_state: STATE):
 			set_face(FACE.SCARED)
 		STATE.GROUND:
 			currentJumps = airJumps
+		STATE.DIE:
+			set_face(FACE.DEAD)
 
 func set_hand(action: HAND, is_right: bool):
 	$leftHand.show()
@@ -193,7 +197,7 @@ func move_body():
 		currentJumps = airJumps
 		velocity = Vector2.ZERO
 		return
-	if state != STATE.GRAB:
+	if not state in [STATE.GRAB, STATE.DIE]:
 		if is_on_floor():
 			set_state(STATE.GROUND)
 		else:
@@ -208,7 +212,8 @@ func move_body():
 		drag *= -1
 	if is_on_floor() and direction == 0:
 		velocity.x += drag
-	velocity.x += direction * speed
+	if state != STATE.DIE:
+		velocity.x += direction * speed
 	velocity.y += gravityForce
 	velocity = velocity.clamp(-maxVel, maxVel)
 
@@ -216,7 +221,20 @@ func _on_BeatMover_beat(beats_passed):
 	if beats_passed % 2 == 0:
 		beat()
 
-func reset_stats():
+func set_ghost_mode(ghost):
+	set_collision_layer_value(2, not ghost)
+	set_collision_mask_value(3, not ghost)
+	set_collision_mask_value(4, not ghost)
+	set_collision_mask_value(5, not ghost)
+	set_collision_mask_value(6, not ghost)
+
+func die():
+	set_state(STATE.DIE)
+	velocity.y = -jumpForce / 2
+	set_ghost_mode(true)
+
+func reset():
+	set_ghost_mode(false)
 	currentHealth = maxHealth
 	currentStamina = stamina
 	currentJumps = airJumps
@@ -230,7 +248,7 @@ func _ready():
 	var notifier = VisibleOnScreenEnabler2D.new()
 	add_child(notifier)
 	notifier.connect("screen_exited", _on_ScreenExited)
-	reset_stats()
+	reset()
 
 func _on_ScreenExited():
 	out = true
@@ -239,7 +257,7 @@ func _on_ScreenExited():
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
-		beat()
+		die()
 	move_body()
 	move_hands()
 	move_and_slide()
