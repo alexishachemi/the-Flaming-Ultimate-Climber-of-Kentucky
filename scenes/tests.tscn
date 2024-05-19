@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dl2f8lc6amcyk" path="res://scenes/Player.tscn" id="1_w1how"]
 [ext_resource type="Texture2D" uid="uid://cmj7asdv4yrwt" path="res://ressources/icon.svg" id="2_gdvan"]
-[ext_resource type="PackedScene" uid="uid://byfuyvw34ctl8" path="res://scenes/powerups/powerup.tscn" id="3_ahx1c"]
+[ext_resource type="PackedScene" uid="uid://dbmvp3gitiqd7" path="res://scenes/powerups/randomPowerup.tscn" id="3_de4g6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1hw3"]
 size = Vector2(72, 46)
@@ -44,15 +44,5 @@ position = Vector2(0.999969, -1.00001)
 scale = Vector2(7.90625, 0.359375)
 texture = ExtResource("2_gdvan")
 
-[node name="powerup" parent="." instance=ExtResource("3_ahx1c")]
-position = Vector2(253, 458)
-scale = Vector2(2.741, 2.741)
-animation = "eat"
-duration_sec = 5.0
-increment = false
-speed = 1000.0
-acceleration = 10.0
-staminaDrainEnabled = true
-metadata/_edit_group_ = true
-
-[editable path="powerup"]
+[node name="RandomPowerup" parent="." instance=ExtResource("3_de4g6")]
+position = Vector2(177, 472)

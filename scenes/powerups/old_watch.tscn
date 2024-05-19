@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://drxqk8rq5khw0"]
+
+[ext_resource type="PackedScene" uid="uid://byfuyvw34ctl8" path="res://scenes/powerups/powerup.tscn" id="1_cerec"]
+[ext_resource type="Texture2D" uid="uid://pibf8d6f0qrp" path="res://ressources/old_watch.png" id="2_q0fcw"]
+
+[node name="old_watch" instance=ExtResource("1_cerec")]
+animation = "keep"
+apply_before_animation = true
+duration_sec = 7.0
+currentHealthEnabled = true
+currentStaminaEnabled = true
+currentJumpsEnabled = true
+maxHealthEnabled = true
+speedEnabled = true
+accelerationEnabled = true
+jumpForceEnabled = true
+airJumpsEnabled = true
+maxStaminaEnabled = true
+staminaDrainEnabled = true
+fly = true
+
+[node name="InitialSprite" parent="." index="0"]
+position = Vector2(4.5, 1)
+scale = Vector2(0.124236, 0.128814)
+texture = ExtResource("2_q0fcw")
+
+[node name="CoockedSprite" parent="." index="1"]
+position = Vector2(0, -50)

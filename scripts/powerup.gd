@@ -1,8 +1,9 @@
 extends Area2D
 
 @export_category("effect")
-@export_enum("none", "cook", "eat")
+@export_enum("none", "cook", "eat", "keep")
 var animation: String = "none"
+@export var apply_before_animation: bool = false
 @export var duration_sec: float = 3.0
 @export var increment: bool = true
 @export_category("stats")
@@ -28,6 +29,7 @@ var animation: String = "none"
 @export var staminaDrain: float = 0
 @export var fly: bool = false
 
+const no_delete_anims = ["keep"]
 var player: Node2D = null
 var animating: bool = false
 
@@ -75,11 +77,19 @@ func _on_area_entered(area):
 	set_deferred("monitoring", false)
 	player = area.get_parent()
 	if animation != "none":
+		if apply_before_animation && player.get("power_up"):
+			player.power_up(stats_to_dict(), duration_sec, increment)
+		if animation in no_delete_anims:
+			$Timer.start(duration_sec)
 		animate()
 	else:
 		queue_free()
 
 func _on_animation_player_animation_finished(_anim_name):
-	if player.get("power_up"):
+	if not apply_before_animation and player.get("power_up"):
 		player.power_up(stats_to_dict(), duration_sec, increment)
+	if not animation in no_delete_anims:
+		queue_free()
+
+func _on_timer_timeout():
 	queue_free()
