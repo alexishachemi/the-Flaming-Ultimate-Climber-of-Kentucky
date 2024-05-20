@@ -34,6 +34,7 @@ func _process(delta):
 func teleport_player_to_checkpoint():
 	# Teleport the player to the last checkpoint.
 	player.position = last_checkpoint
+	player.velocity = Vector2.ZERO
 	update_camera_position()
 
 func update_camera_position():

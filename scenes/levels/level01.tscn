@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqgfyycvjynit"]
+[gd_scene load_steps=11 format=3 uid="uid://dqgfyycvjynit"]
 
 [ext_resource type="PackedScene" uid="uid://d0lktis282tns" path="res://scenes/levels/base_level.tscn" id="1_bjy2e"]
 [ext_resource type="PackedScene" uid="uid://dnq8ac5o6m1y3" path="res://level/platform.tscn" id="2_cjyyo"]
@@ -7,13 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bamxnkbkuvk1p" path="res://level/platform_sca_x4y2.tscn" id="4_1o0p6"]
 [ext_resource type="PackedScene" uid="uid://dmhoyxpm1o0yv" path="res://level/platform_ro_minus_45.tscn" id="5_tc1gg"]
 [ext_resource type="PackedScene" uid="uid://byle47c813cwy" path="res://scenes/ennemy.tscn" id="8_w64ti"]
+[ext_resource type="PackedScene" uid="uid://c8vn8rkuh8xgg" path="res://scenes/potato.tscn" id="10_3kksn"]
 [ext_resource type="PackedScene" uid="uid://buqrjnjki86im" path="res://scenes/checkpoint.tscn" id="10_anhf0"]
 [ext_resource type="PackedScene" uid="uid://c82w556ffjpfc" path="res://scenes/powerups/chicken.tscn" id="11_x46bm"]
 
 [node name="BaseLevel" instance=ExtResource("1_bjy2e")]
-
-[node name="Background2" parent="GameCamera" index="3"]
-position = Vector2(-32, -2024)
 
 [node name="Platform" parent="." index="6" instance=ExtResource("2_cjyyo")]
 position = Vector2(-192, 56)
@@ -52,7 +50,7 @@ position = Vector2(-32, -776)
 position = Vector2(-184, -832)
 
 [node name="Platform13" parent="." index="18" instance=ExtResource("2_cjyyo")]
-position = Vector2(-200, -1416)
+position = Vector2(-259, -1406)
 
 [node name="Platform22" parent="." index="19" instance=ExtResource("2_cjyyo")]
 position = Vector2(-16, -1160)
@@ -98,11 +96,11 @@ position = Vector2(168, -1080)
 rotation = -0.450181
 
 [node name="Platform_sca_x4y5" parent="." index="32" instance=ExtResource("4_1o0p6")]
-position = Vector2(88, -1288)
+position = Vector2(115, -1277)
 rotation = -0.0467299
 
 [node name="Platform_sca_x4y6" parent="." index="33" instance=ExtResource("4_1o0p6")]
-position = Vector2(-80, -1360)
+position = Vector2(-97.0001, -1397)
 rotation = 0.630404
 
 [node name="Platform_ro_minus_45" parent="." index="34" instance=ExtResource("5_tc1gg")]
@@ -180,3 +178,144 @@ rotation = 2.0576
 
 [node name="chicken" parent="." index="54" instance=ExtResource("11_x46bm")]
 position = Vector2(436, 255)
+
+[node name="Potato" parent="." index="55" instance=ExtResource("10_3kksn")]
+position = Vector2(137, 234)
+
+[node name="Potato2" parent="." index="56" instance=ExtResource("10_3kksn")]
+position = Vector2(10, 171)
+
+[node name="Potato3" parent="." index="57" instance=ExtResource("10_3kksn")]
+position = Vector2(-80, 84)
+
+[node name="Potato4" parent="." index="58" instance=ExtResource("10_3kksn")]
+position = Vector2(-192, 21)
+
+[node name="Potato5" parent="." index="59" instance=ExtResource("10_3kksn")]
+position = Vector2(-144, -89)
+
+[node name="Potato6" parent="." index="60" instance=ExtResource("10_3kksn")]
+position = Vector2(-273, -142)
+
+[node name="Potato7" parent="." index="61" instance=ExtResource("10_3kksn")]
+position = Vector2(102, -147)
+
+[node name="Potato8" parent="." index="62" instance=ExtResource("10_3kksn")]
+position = Vector2(233, -32)
+
+[node name="Potato9" parent="." index="63" instance=ExtResource("10_3kksn")]
+position = Vector2(243, -237)
+
+[node name="Potato10" parent="." index="64" instance=ExtResource("10_3kksn")]
+position = Vector2(260, -150)
+
+[node name="Potato11" parent="." index="65" instance=ExtResource("10_3kksn")]
+position = Vector2(-30, -156)
+
+[node name="Potato12" parent="." index="66" instance=ExtResource("10_3kksn")]
+position = Vector2(-362, -93)
+
+[node name="Potato13" parent="." index="67" instance=ExtResource("10_3kksn")]
+position = Vector2(27, -307)
+
+[node name="Potato14" parent="." index="68" instance=ExtResource("10_3kksn")]
+position = Vector2(294, -394)
+
+[node name="Potato15" parent="." index="69" instance=ExtResource("10_3kksn")]
+position = Vector2(435, -331)
+
+[node name="Potato16" parent="." index="70" instance=ExtResource("10_3kksn")]
+position = Vector2(30, -482)
+
+[node name="Potato17" parent="." index="71" instance=ExtResource("10_3kksn")]
+position = Vector2(-236, -549)
+
+[node name="Potato18" parent="." index="72" instance=ExtResource("10_3kksn")]
+position = Vector2(-119, -666)
+
+[node name="Potato19" parent="." index="73" instance=ExtResource("10_3kksn")]
+position = Vector2(48, -603)
+
+[node name="Potato20" parent="." index="74" instance=ExtResource("10_3kksn")]
+position = Vector2(157, -720)
+
+[node name="Potato21" parent="." index="75" instance=ExtResource("10_3kksn")]
+position = Vector2(348, -768)
+
+[node name="Potato22" parent="." index="76" instance=ExtResource("10_3kksn")]
+position = Vector2(-35, -812)
+
+[node name="Potato23" parent="." index="77" instance=ExtResource("10_3kksn")]
+position = Vector2(-184, -870)
+
+[node name="Potato24" parent="." index="78" instance=ExtResource("10_3kksn")]
+position = Vector2(-285, -982)
+
+[node name="Potato25" parent="." index="79" instance=ExtResource("10_3kksn")]
+position = Vector2(-77, -1012)
+
+[node name="Potato26" parent="." index="80" instance=ExtResource("10_3kksn")]
+position = Vector2(152, -1115)
+
+[node name="Potato27" parent="." index="81" instance=ExtResource("10_3kksn")]
+position = Vector2(-19, -1194)
+
+[node name="Potato28" parent="." index="82" instance=ExtResource("10_3kksn")]
+position = Vector2(87, -1321)
+
+[node name="Potato29" parent="." index="83" instance=ExtResource("10_3kksn")]
+position = Vector2(354, -1371)
+
+[node name="Potato30" parent="." index="84" instance=ExtResource("10_3kksn")]
+position = Vector2(-76, -1422)
+
+[node name="Potato31" parent="." index="85" instance=ExtResource("10_3kksn")]
+position = Vector2(-259, -1438)
+
+[node name="Potato32" parent="." index="86" instance=ExtResource("10_3kksn")]
+position = Vector2(-410, -1526)
+
+[node name="Potato33" parent="." index="87" instance=ExtResource("10_3kksn")]
+position = Vector2(-209, -1640)
+
+[node name="Potato34" parent="." index="88" instance=ExtResource("10_3kksn")]
+position = Vector2(136, -1765)
+
+[node name="Potato35" parent="." index="89" instance=ExtResource("10_3kksn")]
+position = Vector2(-81, -1893)
+
+[node name="Potato36" parent="." index="90" instance=ExtResource("10_3kksn")]
+position = Vector2(271, -1845)
+
+[node name="Potato37" parent="." index="91" instance=ExtResource("10_3kksn")]
+position = Vector2(63, -2082)
+
+[node name="Potato38" parent="." index="92" instance=ExtResource("10_3kksn")]
+position = Vector2(-226, -2130)
+
+[node name="Potato39" parent="." index="93" instance=ExtResource("10_3kksn")]
+position = Vector2(23, -2217)
+
+[node name="Potato40" parent="." index="94" instance=ExtResource("10_3kksn")]
+position = Vector2(152, -2330)
+
+[node name="Potato41" parent="." index="95" instance=ExtResource("10_3kksn")]
+position = Vector2(-88, -2374)
+
+[node name="Potato42" parent="." index="96" instance=ExtResource("10_3kksn")]
+position = Vector2(-232, -2456)
+
+[node name="Potato43" parent="." index="97" instance=ExtResource("10_3kksn")]
+position = Vector2(275, -2396)
+
+[node name="Potato44" parent="." index="98" instance=ExtResource("10_3kksn")]
+position = Vector2(468, -2504)
+
+[node name="Potato45" parent="." index="99" instance=ExtResource("10_3kksn")]
+position = Vector2(197, -2620)
+
+[node name="Potato46" parent="." index="100" instance=ExtResource("10_3kksn")]
+position = Vector2(-358, -2584)
+
+[node name="Potato47" parent="." index="101" instance=ExtResource("10_3kksn")]
+position = Vector2(1, -2663)

@@ -2,7 +2,7 @@ extends Camera2D
 
 @onready var beat_mover = $"../BeatMover"
 
-var camera_speed = 60  # Speed at which the camera moves upward, adjust as needed
+var camera_speed = 50  # Speed at which the camera moves upward, adjust as needed
 
 # References to background images for the parallax effect
 @onready var background1 = $Background1
@@ -16,7 +16,7 @@ var initBG3;
 var initBG4;
 
 # Offsets for parallax scrolling
-var parallax_offsets = [-1.1, -1.2, -1.4, -1.8]
+var parallax_offsets = [-1.05, -1.1, -1.2, -1.4]
 
 # Signal connection (assuming the BeatMover emits 'beat' and the camera is a child or reachable by the BeatMover)
 func _ready():
