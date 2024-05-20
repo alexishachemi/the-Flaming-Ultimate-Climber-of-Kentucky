@@ -17,7 +17,7 @@ func _process(delta):
 	rotation = lerp_angle(rotation, angle_to_player, rotation_speed * delta)
 
 func _on_BeatMover_beat(beat_passed):
-	if (beat_passed % 3) == 0:
+	if (beat_passed % 16) != 0:
 		return
 	var projectile = projectile_scene.instantiate()
 	get_parent().add_child(projectile)
