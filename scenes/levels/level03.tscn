@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" path="res://scenes/potato.tscn" id="10_a8dnq"]
 [ext_resource type="PackedScene" path="res://level/Canon.tscn" id="11_3vlru"]
 [ext_resource type="PackedScene" uid="uid://dbmvp3gitiqd7" path="res://scenes/powerups/randomPowerup.tscn" id="12_2qyhx"]
+[ext_resource type="PackedScene" uid="uid://c82w556ffjpfc" path="res://scenes/powerups/chicken.tscn" id="12_4tyq0"]
 
 [node name="BaseLevel" instance=ExtResource("1_n4qtt")]
 
@@ -115,293 +116,293 @@ position = Vector2(216, -240)
 [node name="ice cream" parent="." index="28" instance=ExtResource("5_rvjlv")]
 position = Vector2(56, -752)
 
-[node name="powerup" parent="." index="29" instance=ExtResource("9_32dfq")]
-position = Vector2(-304, -1840)
-
-[node name="Platform11" parent="." index="30" instance=ExtResource("7_p8c87")]
+[node name="Platform11" parent="." index="29" instance=ExtResource("7_p8c87")]
 position = Vector2(176, -1128)
 
-[node name="Platform7" parent="." index="31" instance=ExtResource("7_p8c87")]
+[node name="Platform7" parent="." index="30" instance=ExtResource("7_p8c87")]
 position = Vector2(-176, -1864)
 
-[node name="Platform8" parent="." index="32" instance=ExtResource("7_p8c87")]
+[node name="Platform8" parent="." index="31" instance=ExtResource("7_p8c87")]
 position = Vector2(-296, -2256)
 
-[node name="Platform20" parent="." index="33" instance=ExtResource("7_p8c87")]
+[node name="Platform20" parent="." index="32" instance=ExtResource("7_p8c87")]
 position = Vector2(-408, -2376)
 
-[node name="Platform21" parent="." index="34" instance=ExtResource("7_p8c87")]
+[node name="Platform21" parent="." index="33" instance=ExtResource("7_p8c87")]
 position = Vector2(-336, -2376)
 
-[node name="Platform22" parent="." index="35" instance=ExtResource("7_p8c87")]
+[node name="Platform22" parent="." index="34" instance=ExtResource("7_p8c87")]
 position = Vector2(-256, -2392)
 rotation = -0.409576
 
-[node name="Platform25" parent="." index="36" instance=ExtResource("7_p8c87")]
+[node name="Platform25" parent="." index="35" instance=ExtResource("7_p8c87")]
 position = Vector2(-208, -2440)
 rotation = -1.12138
 
-[node name="Platform26" parent="." index="37" instance=ExtResource("7_p8c87")]
+[node name="Platform26" parent="." index="36" instance=ExtResource("7_p8c87")]
 position = Vector2(-208, -2440)
 rotation = -1.12138
 
-[node name="Platform23" parent="." index="38" instance=ExtResource("7_p8c87")]
+[node name="Platform23" parent="." index="37" instance=ExtResource("7_p8c87")]
 position = Vector2(-480, -2400)
 rotation = 0.571124
 
-[node name="Platform24" parent="." index="39" instance=ExtResource("7_p8c87")]
+[node name="Platform24" parent="." index="38" instance=ExtResource("7_p8c87")]
 position = Vector2(-536, -2440)
 rotation = 0.666455
 
-[node name="Platform9" parent="." index="40" instance=ExtResource("7_p8c87")]
+[node name="Platform9" parent="." index="39" instance=ExtResource("7_p8c87")]
 position = Vector2(-128, -2088)
 
-[node name="Platform10" parent="." index="41" instance=ExtResource("7_p8c87")]
+[node name="Platform10" parent="." index="40" instance=ExtResource("7_p8c87")]
 position = Vector2(-464, -2104)
 
-[node name="Potato" parent="." index="42" instance=ExtResource("10_a8dnq")]
+[node name="Potato" parent="." index="41" instance=ExtResource("10_a8dnq")]
 position = Vector2(288, 152)
 
-[node name="Potato2" parent="." index="43" instance=ExtResource("10_a8dnq")]
+[node name="Potato2" parent="." index="42" instance=ExtResource("10_a8dnq")]
 position = Vector2(192, 88)
 
-[node name="Potato3" parent="." index="44" instance=ExtResource("10_a8dnq")]
+[node name="Potato3" parent="." index="43" instance=ExtResource("10_a8dnq")]
 position = Vector2(80, 40)
 
-[node name="Potato4" parent="." index="45" instance=ExtResource("10_a8dnq")]
+[node name="Potato4" parent="." index="44" instance=ExtResource("10_a8dnq")]
 position = Vector2(-24, -40)
 rotation = 0.113957
 
-[node name="Potato5" parent="." index="46" instance=ExtResource("10_a8dnq")]
+[node name="Potato5" parent="." index="45" instance=ExtResource("10_a8dnq")]
 position = Vector2(-208, -200)
 rotation = 0.113957
 
-[node name="Potato6" parent="." index="47" instance=ExtResource("10_a8dnq")]
+[node name="Potato6" parent="." index="46" instance=ExtResource("10_a8dnq")]
 position = Vector2(-232, -200)
 rotation = 0.113957
 
-[node name="Potato7" parent="." index="48" instance=ExtResource("10_a8dnq")]
+[node name="Potato7" parent="." index="47" instance=ExtResource("10_a8dnq")]
 position = Vector2(104, -144)
 rotation = 0.113957
 
-[node name="Potato8" parent="." index="49" instance=ExtResource("10_a8dnq")]
+[node name="Potato8" parent="." index="48" instance=ExtResource("10_a8dnq")]
 position = Vector2(176, -232)
 rotation = 0.113957
 
-[node name="Potato9" parent="." index="50" instance=ExtResource("10_a8dnq")]
+[node name="Potato9" parent="." index="49" instance=ExtResource("10_a8dnq")]
 position = Vector2(288, -264)
 rotation = 0.113957
 
-[node name="Potato10" parent="." index="51" instance=ExtResource("10_a8dnq")]
+[node name="Potato10" parent="." index="50" instance=ExtResource("10_a8dnq")]
 position = Vector2(304, -384)
 rotation = 0.113957
 
-[node name="Potato11" parent="." index="52" instance=ExtResource("10_a8dnq")]
+[node name="Potato11" parent="." index="51" instance=ExtResource("10_a8dnq")]
 position = Vector2(336, -504)
 rotation = 0.113957
 
-[node name="Potato12" parent="." index="53" instance=ExtResource("10_a8dnq")]
+[node name="Potato12" parent="." index="52" instance=ExtResource("10_a8dnq")]
 position = Vector2(448, -616)
 rotation = 0.113957
 
-[node name="Potato13" parent="." index="54" instance=ExtResource("10_a8dnq")]
+[node name="Potato13" parent="." index="53" instance=ExtResource("10_a8dnq")]
 position = Vector2(472, -616)
 rotation = 0.113957
 
-[node name="Potato14" parent="." index="55" instance=ExtResource("10_a8dnq")]
+[node name="Potato14" parent="." index="54" instance=ExtResource("10_a8dnq")]
 position = Vector2(256, -672)
 rotation = 0.113957
 
-[node name="Potato15" parent="." index="56" instance=ExtResource("10_a8dnq")]
+[node name="Potato15" parent="." index="55" instance=ExtResource("10_a8dnq")]
 position = Vector2(80, -728)
 rotation = 0.113957
 
-[node name="Potato16" parent="." index="57" instance=ExtResource("10_a8dnq")]
+[node name="Potato16" parent="." index="56" instance=ExtResource("10_a8dnq")]
 position = Vector2(-128, -816)
 rotation = 0.113957
 
-[node name="Potato17" parent="." index="58" instance=ExtResource("10_a8dnq")]
+[node name="Potato17" parent="." index="57" instance=ExtResource("10_a8dnq")]
 position = Vector2(-360, -960)
 rotation = 0.113957
 
-[node name="Potato18" parent="." index="59" instance=ExtResource("10_a8dnq")]
+[node name="Potato18" parent="." index="58" instance=ExtResource("10_a8dnq")]
 position = Vector2(-384, -968)
 rotation = 0.113957
 
-[node name="Potato19" parent="." index="60" instance=ExtResource("10_a8dnq")]
+[node name="Potato19" parent="." index="59" instance=ExtResource("10_a8dnq")]
 position = Vector2(-192, -1000)
 rotation = 0.113957
 
-[node name="Potato20" parent="." index="61" instance=ExtResource("10_a8dnq")]
+[node name="Potato20" parent="." index="60" instance=ExtResource("10_a8dnq")]
 position = Vector2(-48, -1056)
 rotation = 0.113957
 
-[node name="Potato21" parent="." index="62" instance=ExtResource("10_a8dnq")]
+[node name="Potato21" parent="." index="61" instance=ExtResource("10_a8dnq")]
 position = Vector2(72, -1112)
 rotation = 0.113957
 
-[node name="Potato22" parent="." index="63" instance=ExtResource("10_a8dnq")]
+[node name="Potato22" parent="." index="62" instance=ExtResource("10_a8dnq")]
 position = Vector2(176, -1152)
 rotation = 0.113957
 
-[node name="Potato23" parent="." index="64" instance=ExtResource("10_a8dnq")]
+[node name="Potato23" parent="." index="63" instance=ExtResource("10_a8dnq")]
 position = Vector2(352, -1336)
 rotation = 0.113957
 
-[node name="Potato27" parent="." index="65" instance=ExtResource("10_a8dnq")]
+[node name="Potato27" parent="." index="64" instance=ExtResource("10_a8dnq")]
 position = Vector2(24, -1336)
 rotation = 0.113957
 
-[node name="Potato28" parent="." index="66" instance=ExtResource("10_a8dnq")]
+[node name="Potato28" parent="." index="65" instance=ExtResource("10_a8dnq")]
 position = Vector2(-96, -1336)
 rotation = 0.113957
 
-[node name="Potato29" parent="." index="67" instance=ExtResource("10_a8dnq")]
+[node name="Potato29" parent="." index="66" instance=ExtResource("10_a8dnq")]
 position = Vector2(7.99999, -1392)
 rotation = 0.113957
 
-[node name="Potato30" parent="." index="68" instance=ExtResource("10_a8dnq")]
+[node name="Potato30" parent="." index="67" instance=ExtResource("10_a8dnq")]
 position = Vector2(48, -1464)
 rotation = 0.113957
 
-[node name="Potato31" parent="." index="69" instance=ExtResource("10_a8dnq")]
+[node name="Potato31" parent="." index="68" instance=ExtResource("10_a8dnq")]
 position = Vector2(56, -1520)
 rotation = 0.113957
 
-[node name="Potato32" parent="." index="70" instance=ExtResource("10_a8dnq")]
+[node name="Potato32" parent="." index="69" instance=ExtResource("10_a8dnq")]
 position = Vector2(56, -1520)
 rotation = 0.113957
 
-[node name="Potato33" parent="." index="71" instance=ExtResource("10_a8dnq")]
+[node name="Potato33" parent="." index="70" instance=ExtResource("10_a8dnq")]
 position = Vector2(-64, -1568)
 rotation = 0.113957
 
-[node name="Potato34" parent="." index="72" instance=ExtResource("10_a8dnq")]
+[node name="Potato34" parent="." index="71" instance=ExtResource("10_a8dnq")]
 position = Vector2(32, -1696)
 rotation = 0.113957
 
-[node name="Potato36" parent="." index="73" instance=ExtResource("10_a8dnq")]
+[node name="Potato36" parent="." index="72" instance=ExtResource("10_a8dnq")]
 position = Vector2(-64, -1712)
 rotation = 0.113957
 
-[node name="Potato37" parent="." index="74" instance=ExtResource("10_a8dnq")]
+[node name="Potato37" parent="." index="73" instance=ExtResource("10_a8dnq")]
 position = Vector2(24, -1768)
 rotation = 0.113957
 
-[node name="Potato38" parent="." index="75" instance=ExtResource("10_a8dnq")]
+[node name="Potato38" parent="." index="74" instance=ExtResource("10_a8dnq")]
 position = Vector2(-144, -1768)
 rotation = 0.113957
 
-[node name="Potato39" parent="." index="76" instance=ExtResource("10_a8dnq")]
+[node name="Potato39" parent="." index="75" instance=ExtResource("10_a8dnq")]
 position = Vector2(-288, -1808)
 rotation = 0.113957
 
-[node name="Potato41" parent="." index="77" instance=ExtResource("10_a8dnq")]
+[node name="Potato41" parent="." index="76" instance=ExtResource("10_a8dnq")]
 position = Vector2(-304, -1976)
 rotation = 0.113957
 
-[node name="Potato42" parent="." index="78" instance=ExtResource("10_a8dnq")]
+[node name="Potato42" parent="." index="77" instance=ExtResource("10_a8dnq")]
 position = Vector2(-256, -2112)
 rotation = 0.113957
 
-[node name="Potato43" parent="." index="79" instance=ExtResource("10_a8dnq")]
+[node name="Potato43" parent="." index="78" instance=ExtResource("10_a8dnq")]
 position = Vector2(-184, -2224)
 rotation = -2.41596
 
-[node name="Potato44" parent="." index="80" instance=ExtResource("10_a8dnq")]
+[node name="Potato44" parent="." index="79" instance=ExtResource("10_a8dnq")]
 position = Vector2(-23.9999, -2296)
 rotation = -2.41596
 
-[node name="Potato45" parent="." index="81" instance=ExtResource("10_a8dnq")]
+[node name="Potato45" parent="." index="80" instance=ExtResource("10_a8dnq")]
 position = Vector2(7.99994, -2296)
 rotation = -2.41596
 
-[node name="Potato40" parent="." index="82" instance=ExtResource("10_a8dnq")]
+[node name="Potato40" parent="." index="81" instance=ExtResource("10_a8dnq")]
 position = Vector2(-320, -1808)
 rotation = 0.113957
 
-[node name="Potato35" parent="." index="83" instance=ExtResource("10_a8dnq")]
+[node name="Potato35" parent="." index="82" instance=ExtResource("10_a8dnq")]
 position = Vector2(48, -1616)
 rotation = 0.113957
 
-[node name="Potato24" parent="." index="84" instance=ExtResource("10_a8dnq")]
+[node name="Potato24" parent="." index="83" instance=ExtResource("10_a8dnq")]
 position = Vector2(376, -1336)
 rotation = 0.113957
 
-[node name="Potato25" parent="." index="85" instance=ExtResource("10_a8dnq")]
+[node name="Potato25" parent="." index="84" instance=ExtResource("10_a8dnq")]
 position = Vector2(376, -1336)
 rotation = 0.113957
 
-[node name="Potato26" parent="." index="86" instance=ExtResource("10_a8dnq")]
+[node name="Potato26" parent="." index="85" instance=ExtResource("10_a8dnq")]
 position = Vector2(248, -1232)
 rotation = 0.113957
 
-[node name="Platform14" parent="." index="87" instance=ExtResource("7_p8c87")]
+[node name="Platform14" parent="." index="86" instance=ExtResource("7_p8c87")]
 position = Vector2(24, -1739)
 
-[node name="Platform15" parent="." index="88" instance=ExtResource("7_p8c87")]
+[node name="Platform15" parent="." index="87" instance=ExtResource("7_p8c87")]
 position = Vector2(-32, -1650)
 
-[node name="Platform_grab9" parent="." index="89" instance=ExtResource("3_b07td")]
+[node name="Platform_grab9" parent="." index="88" instance=ExtResource("3_b07td")]
 position = Vector2(72, -1512)
 rotation = -1.56909
 
-[node name="Platform_grab15" parent="." index="90" instance=ExtResource("3_b07td")]
+[node name="Platform_grab15" parent="." index="89" instance=ExtResource("3_b07td")]
 position = Vector2(264, -1224)
 rotation = -1.27568
 
-[node name="Platform_grab10" parent="." index="91" instance=ExtResource("3_b07td")]
+[node name="Platform_grab10" parent="." index="90" instance=ExtResource("3_b07td")]
 position = Vector2(72, -1608)
 rotation = -1.56909
 
-[node name="Platform_grab11" parent="." index="92" instance=ExtResource("3_b07td")]
+[node name="Platform_grab11" parent="." index="91" instance=ExtResource("3_b07td")]
 position = Vector2(-80, -1520)
 rotation = -1.56909
 
-[node name="Platform_grab12" parent="." index="93" instance=ExtResource("3_b07td")]
+[node name="Platform_grab12" parent="." index="92" instance=ExtResource("3_b07td")]
 position = Vector2(-80, -1616)
 rotation = -1.56909
 
-[node name="Platform_grab13" parent="." index="94" instance=ExtResource("3_b07td")]
+[node name="Platform_grab13" parent="." index="93" instance=ExtResource("3_b07td")]
 position = Vector2(72, -1704)
 rotation = -1.56909
 
-[node name="Platform_grab14" parent="." index="95" instance=ExtResource("3_b07td")]
+[node name="Platform_grab14" parent="." index="94" instance=ExtResource("3_b07td")]
 position = Vector2(-80, -1712)
 rotation = -1.56909
 
-[node name="Platform12" parent="." index="96" instance=ExtResource("8_32llt")]
+[node name="Platform12" parent="." index="95" instance=ExtResource("8_32llt")]
 position = Vector2(-144, -1744)
 
-[node name="Platform13" parent="." index="97" instance=ExtResource("8_32llt")]
+[node name="Platform13" parent="." index="96" instance=ExtResource("8_32llt")]
 position = Vector2(88, -1304)
 
-[node name="Platform16" parent="." index="98" instance=ExtResource("8_32llt")]
+[node name="Platform16" parent="." index="97" instance=ExtResource("8_32llt")]
 position = Vector2(-152, -1304)
 
-[node name="Platform19" parent="." index="99" instance=ExtResource("8_32llt")]
+[node name="Platform19" parent="." index="98" instance=ExtResource("8_32llt")]
 position = Vector2(-152, -1304)
 
-[node name="Platform17" parent="." index="100" instance=ExtResource("8_32llt")]
+[node name="Platform17" parent="." index="99" instance=ExtResource("8_32llt")]
 position = Vector2(-72, -1304)
 
-[node name="Platform18" parent="." index="101" instance=ExtResource("8_32llt")]
+[node name="Platform18" parent="." index="100" instance=ExtResource("8_32llt")]
 position = Vector2(8, -1304)
 
-[node name="Platform_grab16" parent="." index="102" instance=ExtResource("3_b07td")]
+[node name="Platform_grab16" parent="." index="101" instance=ExtResource("3_b07td")]
 position = Vector2(8, -1368)
 
-[node name="Platform_grab17" parent="." index="103" instance=ExtResource("3_b07td")]
+[node name="Platform_grab17" parent="." index="102" instance=ExtResource("3_b07td")]
 position = Vector2(64, -1440)
 
-[node name="Canon" parent="." index="104" instance=ExtResource("11_3vlru")]
+[node name="Canon" parent="." index="103" instance=ExtResource("11_3vlru")]
 position = Vector2(-392, -2592)
 
-[node name="tabasco" parent="." index="105" instance=ExtResource("6_wuee7")]
+[node name="tabasco" parent="." index="104" instance=ExtResource("6_wuee7")]
 position = Vector2(40, -1480)
 
-[node name="RandomPowerup" parent="." index="106" instance=ExtResource("12_2qyhx")]
+[node name="RandomPowerup" parent="." index="105" instance=ExtResource("12_2qyhx")]
 position = Vector2(-48, -1072)
 
-[node name="RandomPowerup2" parent="." index="107" instance=ExtResource("12_2qyhx")]
+[node name="RandomPowerup2" parent="." index="106" instance=ExtResource("12_2qyhx")]
 position = Vector2(-464, 248)
+
+[node name="chicken" parent="." index="107" instance=ExtResource("12_4tyq0")]
+position = Vector2(-307, -1829)
