@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://d0lktis282tns" path="res://scenes/levels/base_level.tscn" id="1_n4qtt"]
 [ext_resource type="AudioStream" uid="uid://brvgjqtros8l6" path="res://ressources/Dancing triangle with goofy ahh music.mp3" id="2_tc48o"]
-[ext_resource type="PackedScene" uid="uid://ki656jchho1b" path="res://level/platform_grabable.tscn" id="3_b07td"]
+[ext_resource type="PackedScene" path="res://level/platform_grabable.tscn" id="3_b07td"]
 [ext_resource type="PackedScene" uid="uid://buqrjnjki86im" path="res://scenes/checkpoint.tscn" id="4_7yhlj"]
 [ext_resource type="PackedScene" uid="uid://47lbuk6w756d" path="res://scenes/powerups/ice_cream.tscn" id="5_rvjlv"]
 [ext_resource type="PackedScene" uid="uid://cbrglm331xakw" path="res://scenes/powerups/tabasco.tscn" id="6_wuee7"]
 [ext_resource type="PackedScene" uid="uid://2lcyj1uallj3" path="res://level/platform_ro_minus_90.tscn" id="7_p8c87"]
 [ext_resource type="PackedScene" uid="uid://dnq8ac5o6m1y3" path="res://level/platform.tscn" id="8_32llt"]
 [ext_resource type="PackedScene" uid="uid://byfuyvw34ctl8" path="res://scenes/powerups/powerup.tscn" id="9_32dfq"]
-[ext_resource type="PackedScene" uid="uid://c8vn8rkuh8xgg" path="res://scenes/potato.tscn" id="10_a8dnq"]
-[ext_resource type="PackedScene" uid="uid://b25mj54tafmd3" path="res://level/Canon.tscn" id="11_3vlru"]
+[ext_resource type="PackedScene" path="res://scenes/potato.tscn" id="10_a8dnq"]
+[ext_resource type="PackedScene" path="res://level/Canon.tscn" id="11_3vlru"]
 [ext_resource type="PackedScene" uid="uid://dbmvp3gitiqd7" path="res://scenes/powerups/randomPowerup.tscn" id="12_2qyhx"]
 
 [node name="BaseLevel" instance=ExtResource("1_n4qtt")]
@@ -21,6 +21,7 @@ volume_db = -16.865
 
 [node name="Player" parent="." index="4"]
 position = Vector2(327, 251)
+color = "green"
 
 [node name="Platform_grab" parent="." index="6" instance=ExtResource("3_b07td")]
 position = Vector2(-56, -40)
