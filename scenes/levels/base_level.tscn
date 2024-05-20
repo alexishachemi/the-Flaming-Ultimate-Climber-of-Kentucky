@@ -59,6 +59,7 @@ script = ExtResource("2_os0r1")
 
 [node name="EscMenu" parent="GameCamera" instance=ExtResource("3_xj2tw")]
 visible = false
+z_index = 2
 
 [node name="zoom_effect" type="AnimationPlayer" parent="GameCamera"]
 libraries = {
@@ -113,6 +114,7 @@ texture = ExtResource("9_0qtax")
 [node name="Player" parent="." instance=ExtResource("10_omap5")]
 position = Vector2(285, 258)
 scale = Vector2(0.255, 0.255)
+speed = 400
 
 [node name="LvlManager" type="Node2D" parent="."]
 script = ExtResource("11_ucq5w")

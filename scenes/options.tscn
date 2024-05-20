@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8ndve52yqvlc"]
+[gd_scene load_steps=3 format=3 uid="uid://c8ndve52yqvlc"]
 
+[ext_resource type="Script" path="res://scripts/options.gd" id="1_7ejvp"]
 [ext_resource type="VideoStream" path="res://ressources/_godot_auto_45444/internal_godot.ogv" id="1_65u0j"]
 
 [node name="Yes" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7ejvp")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 1
@@ -25,3 +27,19 @@ grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("1_65u0j")
 autoplay = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Reset"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Cheat"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

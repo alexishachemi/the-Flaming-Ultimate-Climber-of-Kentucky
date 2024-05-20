@@ -3,6 +3,14 @@ extends CharacterBody2D
 signal healthChanged
 signal staminaChanged
 
+signal levelFailed
+
+var lifes : int = 3
+
+@onready var hearth1 = $CanvasLayer/TextureRect
+@onready var hearth2 = $CanvasLayer/TextureRect2
+@onready var hearth3 = $CanvasLayer/TextureRect3
+
 @export var damagedInvSeconds: float = 2
 
 @export_group("Apearance")
@@ -47,6 +55,7 @@ var oldStats: Dictionary = {
 
 var direction: int = 1
 const HAND_MAX_ROTATION: float = 60
+const FLAP_THRESHOLD = 45
 var handRotation: float = 0
 
 var out: bool = false
@@ -64,6 +73,29 @@ var grabJumped: bool = false
 
 var onBeat: bool = false
 var onHit: bool = false
+
+var lastFlappedUp = false
+var flappedUp = false
+var flappedDown = false
+
+func flap():
+	var flying: bool = isFlying > 0
+	$leftHand/sprite.visible = not flying
+	$rightHand/sprite.visible = not flying
+	$leftHand/wing.visible = flying
+	$rightHand/wing.visible = flying
+	if not flying:
+		return
+	if not lastFlappedUp and handRotation <= -FLAP_THRESHOLD:
+		flappedUp = true
+		lastFlappedUp = true
+	if lastFlappedUp and handRotation >= FLAP_THRESHOLD:
+		flappedDown = true
+		lastFlappedUp = false
+	if flappedUp and flappedDown:
+		velocity.y = -jumpForce * 3
+		flappedUp = false
+		flappedDown = false
 
 func stats_to_dict():
 	return {
@@ -308,9 +340,16 @@ func set_ghost_mode(ghost):
 	set_collision_mask_value(7, not ghost)
 
 func die():
-	set_state(STATE.DIE)
-	velocity.y = -jumpForce / 2
-	set_ghost_mode(true)
+	lifes -= 1
+	if lifes < 3:
+		hearth3.visible = false
+	if lifes < 2:
+		hearth2.visible = false
+	if lifes < 1:
+		hearth1.visible = false
+	if lifes < 0:
+		levelFailed.emit()
+
 
 func _on_invincibility_timeout():
 	$InvincibilityAnim.stop()
@@ -324,12 +363,18 @@ func hurt(damage: float):
 	currentHealth -= damage
 	$Invincibility.start()
 	healthChanged.emit()
+	if currentHealth <= 0:
+		set_state(STATE.DIE)
+		velocity.y = -jumpForce / 2
+		set_ghost_mode(true)
 
 func reset():
 	set_ghost_mode(false)
 	currentHealth = maxHealth
 	currentStamina = maxStamina
 	currentJumps = airJumps
+	staminaChanged.emit()
+	healthChanged.emit()
 
 func _ready():
 	var beatMover = get_parent().find_child("BeatMover")
@@ -367,6 +412,7 @@ func _process(delta):
 	handle_stats()
 	move_body()
 	move_hands()
+	flap()
 	move_and_slide()
 
 func _on_right_grab_box_entered(area):
