@@ -23,6 +23,3 @@ staminaDrainEnabled = true
 position = Vector2(-3.09944e-06, -1.19209e-06)
 scale = Vector2(0.0364583, 0.0364583)
 texture = ExtResource("2_bf5pg")
-
-[node name="CoockedSprite" parent="." index="1"]
-position = Vector2(0, -50)

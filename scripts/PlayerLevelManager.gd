@@ -9,6 +9,7 @@ var last_checkpoint = Vector2()
 
 func _ready():
 	last_checkpoint = player.position
+	update_camera_position()
 	# Initialize the checkpoint manager.
 	connect_signals()
 

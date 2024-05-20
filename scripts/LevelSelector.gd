@@ -25,6 +25,7 @@ func _on_lvl_2_button_pressed():
 
 func _on_lvl_3_button_pressed():
 	Global.currentLevel = 3
+	get_tree().change_scene_to_file("res://scenes/levels/level03.tscn")
 
 
 func _on_shop_button_pressed():

@@ -93,7 +93,7 @@ func flap():
 		flappedDown = true
 		lastFlappedUp = false
 	if flappedUp and flappedDown:
-		velocity.y = -jumpForce * 3
+		velocity.y = -jumpForce
 		flappedUp = false
 		flappedDown = false
 

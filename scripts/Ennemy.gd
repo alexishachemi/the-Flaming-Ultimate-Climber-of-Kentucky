@@ -5,8 +5,8 @@ extends CharacterBody2D
 @onready var player = $"../Player"
 
 # Enemy settings
-var speed = 40.0
-var rotation_speed = 10.0  # Higher values mean quicker, smoother rotations
+var speed = 100.0
+var rotation_speed = 0.6  # Higher values mean quicker, smoother rotations
 var projectile_scene = preload("res://scenes/projectile.tscn")
 
 
@@ -24,8 +24,8 @@ func _process(delta):
 	rotation = lerp_angle(rotation, angle_to_mouse, rotation_speed * delta)
 
 	# Move towards the mouse position
-	var move_vec = vec_to_mouse.normalized() * speed
-	velocity = move_vec
+	velocity = transform.x * speed
+	#var move_vec = vec_to_mouse.normalized() * speed
 	move_and_slide()
 
 # Signal handler for shooting

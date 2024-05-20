@@ -24,3 +24,4 @@ func _on_button_pressed(): # reset
 
 func _on_button_2_pressed(): # cheat
 	Global.add_money(9999)
+	Global.player_level = 3

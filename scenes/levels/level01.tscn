@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqgfyycvjynit"]
+[gd_scene load_steps=10 format=3 uid="uid://dqgfyycvjynit"]
 
 [ext_resource type="PackedScene" uid="uid://d0lktis282tns" path="res://scenes/levels/base_level.tscn" id="1_bjy2e"]
 [ext_resource type="PackedScene" uid="uid://dnq8ac5o6m1y3" path="res://level/platform.tscn" id="2_cjyyo"]
-[ext_resource type="PackedScene" path="res://level/Canon.tscn" id="2_rn6ya"]
+[ext_resource type="PackedScene" uid="uid://b25mj54tafmd3" path="res://level/Canon.tscn" id="2_rn6ya"]
 [ext_resource type="PackedScene" uid="uid://bu6skg6p85u5q" path="res://level/platform_ro_45.tscn" id="3_ywbht"]
 [ext_resource type="PackedScene" uid="uid://bamxnkbkuvk1p" path="res://level/platform_sca_x4y2.tscn" id="4_1o0p6"]
 [ext_resource type="PackedScene" uid="uid://dmhoyxpm1o0yv" path="res://level/platform_ro_minus_45.tscn" id="5_tc1gg"]
@@ -14,9 +14,6 @@
 
 [node name="Background2" parent="GameCamera" index="3"]
 position = Vector2(-32, -2024)
-
-[node name="Player" parent="." index="4"]
-dragForce = 150.0
 
 [node name="Platform" parent="." index="6" instance=ExtResource("2_cjyyo")]
 position = Vector2(-192, 56)
@@ -181,7 +178,5 @@ finalCheckPoint = true
 position = Vector2(-64, -1560)
 rotation = 2.0576
 
-[node name="chicken" parent="." index="55" instance=ExtResource("11_x46bm")]
+[node name="chicken" parent="." index="54" instance=ExtResource("11_x46bm")]
 position = Vector2(436, 255)
-
-[connection signal="body_entered" from="Bomb" to="Bomb" method="_on_body_entered"]
