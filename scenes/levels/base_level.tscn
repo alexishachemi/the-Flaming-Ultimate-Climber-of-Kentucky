@@ -1,14 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://d0lktis282tns"]
+[gd_scene load_steps=17 format=3 uid="uid://d0lktis282tns"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_8u3hw"]
 [ext_resource type="Script" path="res://scripts/GameCamera.gd" id="2_os0r1"]
 [ext_resource type="PackedScene" uid="uid://du1qxx0rk1e2r" path="res://scenes/escape.tscn" id="3_xj2tw"]
 [ext_resource type="Texture2D" uid="uid://hemdtby0vuhu" path="res://ressources/afterclosestbg.png" id="4_7o5w1"]
+[ext_resource type="Texture2D" uid="uid://dbmd10e0p5rsj" path="res://ressources/furthestbg.png" id="4_iymku"]
 [ext_resource type="Texture2D" uid="uid://d34kxbno2qf13" path="res://ressources/closestbg.png" id="5_lwvip"]
 [ext_resource type="Texture2D" uid="uid://cn5l7i5mbcoox" path="res://ressources/beforclosestbg.png" id="6_nsk4w"]
 [ext_resource type="Script" path="res://scripts/BeatMover.gd" id="7_s7eho"]
 [ext_resource type="AudioStream" uid="uid://8w8xjtad02lv" path="res://ressources/sandstorm.mp3" id="8_s6bv0"]
-[ext_resource type="Texture2D" uid="uid://cmj7asdv4yrwt" path="res://ressources/icon.svg" id="9_0qtax"]
+[ext_resource type="Texture2D" uid="uid://bpdhbcadqekur" path="res://ressources/kenney_pixel-platformer-blocks/Tiles/Rock/tile_0037.png" id="9_ju2tq"]
 [ext_resource type="PackedScene" uid="uid://dl2f8lc6amcyk" path="res://scenes/Player.tscn" id="10_omap5"]
 [ext_resource type="Script" path="res://scripts/PlayerLevelManager.gd" id="11_ucq5w"]
 
@@ -49,7 +50,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2rsd1"]
-size = Vector2(1013, 46)
+size = Vector2(1013, 15)
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_8u3hw")
@@ -69,24 +70,25 @@ speed_scale = 3.5
 
 [node name="Background1" type="Sprite2D" parent="GameCamera"]
 z_index = -5
-position = Vector2(0, -849)
+position = Vector2(0, -514)
 scale = Vector2(1.145, 1.145)
+texture = ExtResource("4_iymku")
 
 [node name="Background2" type="Sprite2D" parent="GameCamera"]
 z_index = -4
-position = Vector2(0, -1998)
+position = Vector2(0, -1673)
 scale = Vector2(1.145, 1.145)
 texture = ExtResource("4_7o5w1")
 
 [node name="Background3" type="Sprite2D" parent="GameCamera"]
 z_index = -3
-position = Vector2(0, -4304)
+position = Vector2(0, -3990)
 scale = Vector2(1.145, 1.145)
 texture = ExtResource("5_lwvip")
 
 [node name="Background4" type="Sprite2D" parent="GameCamera"]
 z_index = -2
-position = Vector2(0, -8949)
+position = Vector2(0, -8625)
 scale = Vector2(1.145, 1.145)
 texture = ExtResource("6_nsk4w")
 
@@ -103,13 +105,13 @@ collision_mask = 2
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0.5, -1)
+position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_2rsd1")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(-3.49998, -3)
-scale = Vector2(7.85156, 0.375)
-texture = ExtResource("9_0qtax")
+position = Vector2(-1.5, 0.500007)
+scale = Vector2(56.3889, 0.833333)
+texture = ExtResource("9_ju2tq")
 
 [node name="Player" parent="." instance=ExtResource("10_omap5")]
 position = Vector2(285, 258)
