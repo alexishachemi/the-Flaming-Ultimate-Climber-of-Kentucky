@@ -201,6 +201,7 @@ gravityForce = 20
 dragForce = 60.0
 speed = 200
 acceleration = 20
+jumpForce = 550
 
 [node name="rightHand" type="Node2D" parent="."]
 metadata/_edit_group_ = true
